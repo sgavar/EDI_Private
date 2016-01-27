@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/private/_FilesLayout.cshtml";
+}
+
+@model List<DataInventory.Private.Models.FileViewModel>
+
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblFiles">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.id" id="hdFileID" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 160px;">FileName:</td>
+            <td>@item.FileName</td>
+        </tr>
+        <tr>
+            <td class="bold">FileFormat:</td>
+            <td>@item.FileFormat</td>
+        </tr>
+        <tr>
+            <td class="bold">DatasetTitle:</td>
+            <td>@item.DatasetTitle</td>
+        </tr>
+        <tr>
+            <td class="bold">Dataset Restriction:</td>
+            <td>@item.DatasetRestriction</td>
+        </tr>
+
+        <tr>
+            <td class="bold">DatasetLocation:</td>
+            <td>@item.DatasetLocation</td>
+        </tr>
+        <tr>
+            <td class="bold">Dataset Location Description:</td>
+            <td>@item.DatasetLocationDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Collections:</td>
+            <td>@Html.Raw(@item.Collections)</td>
+        </tr>
+        <tr>
+            <td class="bold">Elements:</td>
+            <td>@Html.Raw(@item.Elements)</td>
+        </tr>
+    </table>
+
+}

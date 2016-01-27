@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<SeriesViewModel>
+
+<div class="roundedBox" style="margin: 25px; width: auto; padding: 25px;">
+    <div class="wwwText">
+        <strong>Inventory List</strong><br />
+    </div>
+    <div id="ajaxInventoryListWait"></div>
+    <p style="font-size: smaller;">DISCLAIMER: This is the first beta version of the ED Data Inventory. It is not yet an exhaustive list of ED data collections. ED is planning future updates in response to user feedback and regular expansion as data collections are indexed and added.</p>
+    <div id="divInventoryList">
+        <div class="searchResults">
+            <a href="javascript:void(0)" id="aInventoryStudyAll">Expand All</a><span style="margin: 0 10px 0 10px; color: #f9bd01;">|</span>
+            <a href="javascript:void(0)" id="aSortSeriesList">Sort Descending</a>
+        </div>    
+        <div id="containerInventoryList">                        
+            <table id="tblInventoryList" class="tablesorter" style="margin: 2px;">
+                <thead style="display: none;">
+                    <tr>
+                        <th>Series List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)                                                               
+                    {    
+                        <tr>
+                            <td style="padding: 3px 0 5px 0;">                                              
+                                <div style="margin: 0 8px;" class="bold"><a href="javascript:void(0)" class="aSeriesList" id="@item.seriesID">@item.seriesName</a></div>                        
+                                <div style="margin-left: 8px;"><a href="javascript:void(0)" class="aStudyListCount"><span class="ui-icon ui-icon-circle-plus icon"></span>@item.studyCount @if (@item.studyCount == 1) { <text>study</text> } else { <text>studies</text> }</a></div>
+                                <div style="margin-top: 8px; margin-right: 3px;">
+                                    <div class="studyList" style="display: none; background-color: #f3f3eb; padding: 5px 0;">
+                                        <div style="margin-left: 22px;">
+                                            @Html.Raw(@item.studyList.Replace("aSeriesStudy", "aSeriesStudyList").Replace("aSeriesFollowup", "aSeriesFollowupList"))
+                                        </div>
+                                    </div>              
+                                    <div style="border-top: 1px solid #d5d5cb;"></div>                                       
+                                </div>                                                  
+                            </td>
+                        </tr>
+                    }                                               
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

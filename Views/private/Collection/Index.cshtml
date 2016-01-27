@@ -1,0 +1,281 @@
+﻿@{
+    Layout = "~/Views/Shared/private/_CollectionsLayout.cshtml";
+}
+@model List<DataInventory.Private.Models.CollectionViewModel>
+
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblCollections">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdCollectionID" />@item.Name</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        @if (@item.Symbol != null)
+        {
+            <tr>
+                <td class="bold">Symbol:</td>
+                <td>@item.Symbol</td>
+            </tr>
+        }
+        <tr>
+            <td class="bold">Old Name 1:</td>
+            <td>@item.OldName1</td>
+        </tr>
+        <tr>
+            <td class="bold">Old Name 1 Symbol:</td>
+            <td>@item.OldName1Symbol</td>
+        </tr>
+        <tr>
+            <td class="bold">Old Name1 Duration:</td>
+            <td>@item.OldName1Duration</td>
+        </tr>
+        <tr>
+            <td class="bold">Old Name 2:</td>
+            <td>@item.OldName2</td>
+        </tr>
+        <tr>
+            <td class="bold">Old Name 2 Symbol:</td>
+            <td>@item.OldName2Symbol</td>
+        </tr>
+        <tr>
+            <td class="bold">Old Name 2 Duration:</td>
+            <td>@item.OldName2Duration</td>
+        </tr>
+        <tr>
+            <td class="bold">Parent Id:</td>
+            <td>@item.Parent.Id</td>
+        </tr>
+        <tr>
+            <td class="bold">Parent Name:</td>
+            <td>@item.Parent.Name</td>
+        </tr>
+        <tr>
+            <td class="bold">Investigator:</td>
+            <td>@item.Investigator</td>
+        </tr>
+        <tr>
+            <td class="bold">Bureau Code:</td>
+            <td>@item.BureauCode</td>
+        </tr>
+        <tr>
+            <td class="bold">Program Code:</td>
+            <td>@item.ProgramCode</td>
+        </tr>
+        <tr>
+            <td class="bold">Website:</td>
+            <td>@item.Website</td>
+        </tr>
+        <tr>
+            <td class="bold">Keywords:</td>
+            <td>@item.Keywords</td>
+        </tr>
+        <tr>
+            <td class="bold">Description:</td>
+            <td>@item.Description</td>
+        </tr>
+        <tr>
+            <td class="bold">Authorizing Law:</td>
+            <td>@item.AuthorizingLaw</td>
+        </tr>
+        <tr>
+            <td class="bold">Total Cost:</td>
+            <td>@item.TotalCost</td>
+        </tr>
+        <tr>
+            <td class="bold">Total Cost Years:</td>
+            <td>@item.TotalCostYears</td>
+        </tr>
+        <tr>
+            <td class="bold">Total Cost Description:</td>
+            <td>@item.TotalCostDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Universe:</td>
+            <td>@item.CollectionUniverse</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Collection Longitudinal:</td>
+            <td>@item.CollectionLongitudinal</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Cross Sectional:</td>
+            <td>@item.CollectionCrossSectional</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Program Monitoring:</td>
+            <td>@item.CollectionProgramMonitoring</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Grantee Reporting:</td>
+            <td>@item.CollectionGranteeReporting</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Voluntary:</td>
+            <td>@item.CollectionVoluntary</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Mandatory:</td>
+            <td>@item.CollectionMandatory</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Required For Benefits:</td>
+            <td>@item.CollectionRequiredForBenefits</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Collection Requirement Reason:</td>
+            <td>@item.CollectionRequirementReason</td>
+        </tr>
+        <tr>
+            <td class="bold">Sorn:</td>
+            <td>@item.Sorn</td>
+        </tr>
+        <tr>
+            <td class="bold">Sorn Url:</td>
+            <td>@item.SornUrl</td>
+        </tr>
+        <tr>
+            <td class="bold">Confidentiality Restrictions:</td>
+            <td>@item.ConfidentialityRestrictions</td>
+        </tr>
+        <tr>
+            <td class="bold">PII_DI:</td>
+            <td>@item.PII_DI</td>
+        </tr>
+        <tr>
+            <td class="bold">PIA:</td>
+            <td>@item.PIA</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Could Be Public:</td>
+            <td>@item.DataCouldBePublic</td>
+        </tr>
+        <tr>
+            <td class="bold">Publication Statistics Type:</td>
+            <td>@item.PublicationStatisticsType</td>
+        </tr>
+        <tr>
+            <td class="bold">Publication Statistics Url:</td>
+            <td>@item.PublicationStatisticsUrl</td>
+        </tr>
+        <tr>
+            <td class="bold">Publication Statistics Date:</td>
+            <td>@item.PublicationStatisticsDate</td>
+        </tr>
+        <tr>
+            <td class="bold">Publication Data Url:</td>
+            <td>@item.PublicationDataUrl</td>
+        </tr>
+        <tr>
+            <td class="bold">Publication Data Date:</td>
+            <td>@item.PublicationDataDate</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Publication Restricted Use Data Date:</td>
+            <td>@item.PublicationRestrictedUseDataDate</td>
+        </tr>
+        <tr>
+            <td class="bold">Subject Population Primary:</td>
+            <td>@item.SubjectPopulationPrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">Subject Population Non Primary:</td>
+            <td>@item.SubjectPopulationNonPrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">Subect Population Other:</td>
+            <td>@item.SubectPopulationOther</td>
+        </tr>
+        <tr>
+            <td class="bold">Subject Population Description:</td>
+            <td>@item.SubjectPopulationDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Levels Available:</td>
+            <td>@item.DataLevelsAvailable</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Level Public:</td>
+            <td>@item.DataLevelPublic</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Level Description:</td>
+            <td>@item.DataLevelDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Previous Collection Id:</td>
+            <td>@item.PreviousCollection.Id</td>
+        </tr>
+        <tr>
+            <td class="bold">Previous Collection Name:</td>
+            <td>@item.PreviousCollection.Name</td>
+        </tr>
+        @if (item.Contacts != null && !item.Contacts.Any())
+        {
+            <tr>
+                <td class="bold">Contacts:</td>
+                <td>
+                    <ol>
+                        @foreach (var con in item.Contacts/*.OrderBy(c => c.Order)*/)
+                        {
+                            <li>
+                                <p>Name: @con.FirstName @con.LastName</p>
+                                @if (!String.IsNullOrEmpty(con.EmailAddress))
+                                {
+                                    <p> Email: @con.EmailAddress</p>
+                                }
+                                @if (!String.IsNullOrEmpty(con.TelephoneNumber))
+                                {
+                                    <p>Telephone: @con.TelephoneNumber</p>
+                                }
+                            </li>
+                        }
+                    </ol>
+              </td>
+            </tr>
+        }
+        @if (item.Activities != null && !item.Activities.Any())
+        {
+            <tr>
+                <td class="bold">Activities:</td>
+                <td>
+                    <ol>
+                        @foreach (var act in item.Activities.OrderBy(a => a.Name))
+                        {
+                            <li>@act.Name</li> // need to transform into a link
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
+        @if (item.Files != null && !item.Files.Any())
+        {
+            <tr>
+                <td class="bold">Files:</td>
+                <td>
+                    <ol>
+                        @foreach (var file in item.Files.OrderBy(f => f.FileName))
+                        {
+                            <li>
+                                <p>Dataset Title: @file.DatasetTitle</p>
+                                <p>File Name: @file.FileName</p>
+                                <p>File Format: @file.FileFormat</p>
+                                <p>Dataset Restriction: @file.DatasetRestriction</p>
+                            </li>
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td class="bold">All Elements:</td>
+            <td>@Html.Raw(@item.Elements)</td>
+        </tr>
+    </table>
+
+}    
+

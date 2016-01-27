@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_SeriesDetailLayout.cshtml";    
+}
+
+@model List<SeriesViewModel>
+
+@foreach (var item in Model)
+{    
+    <table style="width: 100%; margin-bottom: 10px" id="tblSeriesDetail">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.seriesID" id="hdSeriesID" />@item.seriesName</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 160px;">Investigator:</td>
+            <td>@item.investigatorList</td>
+        </tr>
+        @if (@item.seriesDesc != null) 
+        {                
+            <tr>
+                <td class="bold">Series Description:</td>
+                <td>@item.seriesDesc</td>            
+            </tr>
+        }            
+        <tr>
+            <td class="bold">All Studies in the Series:</td>
+            <td> 
+                @Html.Raw(@item.studyList)
+            </td>
+        </tr>
+    </table>
+        
+    <div id="accSeries">
+        <h3>SERIES VARIABLES</h3>
+        <div>                
+            @if (@item.searchVariables == true)
+            {    
+                <div class="inline-block"> 
+                    <div>Search Variables Within Series:&nbsp;</div>
+                    <div><input type="text" size="48" name="txtSeriesVarSearchTerm"/></div>
+                    <div class="searchType">
+                        <input type="radio" name="rdSeriesVarSearchType" value="And" checked />And<input type="radio" name="rdSeriesVarSearchType" value="Or" style="margin-left: 15px;" />Or<input type="radio" name="rdSeriesVarSearchType" value="Exact" style="margin-left: 15px;" />Exact Match
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" id="aSearchSeriesVar" title="Search variables within series" class="btnSeriesVarSearch">SEARCH</a>
+                    </div>                    
+                </div>                                
+                <div id="divSearchSeriesVarMsg" class="message" style="display: none;">Please specify a search term.</div>                    
+                <div id="divSeriesVarSearchResults"></div>
+            }                
+            else 
+            {
+                <div class="message">The inclusion of these variables is in progress</div>    
+            }
+        </div>
+        <h3>SERIES FILES</h3>
+        <div>
+            @{Html.RenderAction("GetSeriesFile", "SeriesFile", new { seriesID = @item.seriesID});}
+        </div>
+    </div>
+}    

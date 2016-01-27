@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ED Data Inventory</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />        
+        @Styles.Render("~/Content/css")
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="~/js/federated-analytics.all.min.js"></script>
+    </head>
+    <body>
+       @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @id = "frmSearchData" }))
+       {
+            <div class="diWrap">
+	            <div class="diBanner">
+                    <div class="bnrWrap">
+                <div class="beta">Beta</div><h1 title="ED Data Inventory">&nbsp;</h1>
+            </div>
+            <div class="diMenu">
+                <div id="ajaxMenuSearchWait"></div>               
+       	            <ul>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About the Inventory", "Index", "AboutTheInventory")</li>
+                        <li>@Html.ActionLink("How to Search", "Index", "HowToSearch")</li>    
+                        <li>@Html.ActionLink("Advanced Search", "Index", "Search", null, new { @id = "aAdvancedSearch" })</li>                        
+                        <li class="diItemLast">@Html.ActionLink("Inventory List", "Index", "InventoryList")</li>            
+                        <li class="diItemLast" style="float: right; padding-right: 10px;"><button style="font-size: 3px;" type="submit" class="btnMenuSearch" title="Search inventory"><span class="ui-icon ui-icon-search icon"></span></button></li>    
+                        <li class="diItemLast" style="color: #333; margin: 2px 2px 0 0; float: right;">Search Inventory: @if (@ViewBag.seriesID == "0") { <input type="text" class="diSearchBox" name="txtMenuSearchTerm" value="@ViewBag.searchTerm" /> } else { <input type="text" class="diSearchBox" name="txtMenuSearchTerm" />}</li>
+                        
+                    </ul>
+                    </div>
+                </div>
+                @RenderBody()               
+            </div>
+                    
+            @Scripts.Render("~/Scripts/jquery")
+       } 
+    </body>
+</html>

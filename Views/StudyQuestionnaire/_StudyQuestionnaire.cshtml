@@ -1,0 +1,131 @@
+﻿@model List<StudyQuestionnaireViewModel>
+
+@foreach (var item in Model)
+{   
+    if (@item.questionnaireList.Count() > 0) 
+    { 
+    <div class="pager inline-block" id="pagerStudyQuestionnaire">
+        <div><a href="javascript:void(0)" id="aStudyQuestionnaireAll">Expand All</a><span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span></div>
+        <div><a href="javascript:void(0)" id="aSortQuestionnaire">Sort Descending</a><span style="margin: 0 10px 0 10px; color: #f9bd01;">|</span></div>
+        <div>@item.questionnaireList.Count() @if (@item.questionnaireList.Count() == 1) { <text>result</text> } else { <text>results</text> }<span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span></div>
+        <div><a href="javascript:void(0)"><span class="ui-icon ui-icon-seek-first first icon" style="margin-bottom: -3px;"></span></a></div>
+        <div><a href="javascript:void(0)"><span class="ui-icon ui-icon-seek-prev prev icon" style="margin-bottom: -3px;"></span></a></div>
+	    <div><span class="pagedisplay"></span></div>
+	    <div><a href="javascript:void(0)"><span class="ui-icon ui-icon-seek-next next icon" style="margin-bottom: -3px;"></span></a></div>
+	    <div><a href="javascript:void(0)"><span class="ui-icon ui-icon-seek-end last icon" style="margin-bottom: -3px;"></span></a></div>
+        <div>
+            <span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span>Results Per Page:
+            <select class="pagesize">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="5000">All</option>
+            </select>
+        </div>
+    </div>
+    
+    <div id="containerSearchResults" style="margin: 10px 2px 2px 0;">
+        <table id="tblStudyQuestionnaire" class="tablesorter" style="margin: 2px;">
+            <thead style="display: none;">
+                <tr>
+                    <th>Questionnaire</th>
+                </tr>
+            </thead>
+            <tbody>   
+                @foreach (var questionnaire in @item.questionnaireList)                                                                   
+                {
+                <tr>
+                    <td>                      
+                        <div style="margin: 8px 0 8px 0;"><a href="javascript:void(0)" class="aStudyQuestionnaire"><span class="ui-icon ui-icon-circle-plus icon"></span><span class="bold">@questionnaire.respondentType - @questionnaire.respondentTypeDetail</span></a></div>
+                        <div class="divStudyQuestionnaire" style="background-color: #f3f3eb; padding: 10px 10px 5px 15px; display: none;">
+                            <table style="background-color: #f3f3eb;" id="tblQuestionnaireDetail">
+                                @if (@questionnaire.responseRates != "")
+                                {      
+                                    <tr>
+                                        <td class="bold" style="width:250px;">Response Rates:</td>
+                                        <td>@questionnaire.responseRates</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.observationUnit != "")
+                                {                                          
+                                    <tr>
+                                        <td class="bold">Respondent:</td>
+                                        <td>@questionnaire.observationUnit</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.questionnaireDataTypes != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Data Types:</td>
+                                        <td>@questionnaire.questionnaireDataTypes</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.dataCollectionPurpose != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Data Collection Purpose <a href="javascript:void()" class="tooltip" title="Reason for participation"><span class="ui-icon ui-icon-info icon orange"></span></a>:</td>
+                                        <td>@questionnaire.dataCollectionPurpose</td>
+                                    </tr>
+                                }
+                                @*@if (@questionnaire.authorizingLaw != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Authorizing Law:</td>
+                                        <td>@questionnaire.authorizingLaw</td>
+                                    </tr>
+                                }*@
+                                @if (@questionnaire.confidentialityPledge != "")
+                                {                                          
+                                    <tr>
+                                        <td class="bold">Voluntary and/or Confidentiality Language:</td>
+                                        <td>@questionnaire.confidentialityPledge</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.consentType != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Type of Consent:</td>
+                                        <td>@questionnaire.consentType</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.sampleSize != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Universe/Sample Size:</td>
+                                        <td>@questionnaire.sampleSize</td>
+                                    </tr>
+                                }
+                                @if (@questionnaire.targetPopulationAgeRange != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Age Range of Target Population:</td>
+                                        <td>@questionnaire.targetPopulationAgeRange</td>
+                                    </tr>
+                                }                                
+                                @if (@questionnaire.dataCollectionMode != "")
+                                {          
+                                    <tr>
+                                        <td class="bold">Mode of Data Collection:</td>
+                                        <td>@questionnaire.dataCollectionMode</td>
+                                    </tr>
+                                }                                    
+                            </table>
+                        </div>                                                    
+                        <div style="border-top: 1px solid #d5d5cb;"></div>
+                    </td>
+                </tr>   
+                }                
+            </tbody>
+        </table>
+    </div>
+    }
+    else {
+        <div class="message">0 methodologies</div>
+    }    
+}
+    
+    
+    
+       
+                                                     
+                      

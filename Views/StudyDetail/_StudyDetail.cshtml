@@ -1,0 +1,277 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudyDetailLayout.cshtml";    
+}
+
+@model List<StudyViewModel>
+
+@if (ViewBag.studyID != 0) 
+{
+    foreach (var item in Model)
+    {            
+        <table style="width: 100%; margin-bottom: 10px" id="tblStudyDetail">
+            <tr>
+                <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2">
+                    @item.studyName
+                    <input type="hidden" value="@item.studyID" id="hdStudyID" />
+                    <input type="hidden" value="@ViewBag.studyType" id="hdStudyType" />
+                </td>
+            </tr>            
+        </table>
+    
+        <div id="accStudy">
+            <h3>SCOPE OF STUDY</h3>
+            <div>
+                <table id="tblStudyScope">
+                @if (@item.studyAlternativeTitle != "")
+                {
+                    <tr>
+                        <td class="bold" style="width: 160px;"><span style="float: left; margin-right: 2px;">Alternative Title</span><a href="javascript:void()" class="tooltip" title="Official abbreviation"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@item.studyAlternativeTitle</td>
+                    </tr>
+                }
+                @if (@item.studyPreviousTitle != "")
+                {
+                    <tr>
+                        <td class="bold">Previous Title:</td>
+                        <td>@item.studyPreviousTitle</td>
+                    </tr>
+                }
+                @if (@item.investigator != "")
+                {
+                    <tr>
+                        <td class="bold">Investigator:</td>
+                        <td>@item.investigator</td>
+                    </tr>
+                }
+                @if (@item.bureauCode != "")
+                {
+                    <tr>
+                        <td class="bold">Bureau Code:</td>
+                        <td>@item.bureauCode</td>
+                    </tr>
+                }
+                @if (@item.programCode != "")
+                {
+                    <tr>
+                        <td class="bold">Program Code:</td>
+                        <td>@item.programCode</td>
+                    </tr>
+                }
+                @if (@item.studySummary != "")
+                {
+                    <tr>
+                        <td class="bold">Summary:</td>
+                        <td>@item.studySummary</td>
+                    </tr>
+                }
+                @if (@item.seriesName != "")
+                {
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">Series</span><a href="javascript:void()" class="tooltip" title="A set of related studies that are repeated over time"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td><a href="javascript:void(0)" id="@item.seriesID" class="aStudySeries">@item.seriesName</a></td>
+                    </tr>
+                }
+                @if (@item.persistentURL != "")
+                {
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">Persistent URL</span><a href="javascript:void()" class="tooltip" title="Homepage for the study"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@Html.Raw(@item.persistentURL)</td>
+                    </tr>    
+                }  
+               @if (@item.jsonUniqueIdentifier != "")
+                {
+                    <tr>
+                        <td class="bold">Unique Identifier:</td>
+                        <td>@item.jsonUniqueIdentifier</td>
+                    </tr>    
+                }       
+                @if (@item.subjectTerms != "")
+                {
+                    <tr>
+                        <td style="font-weight:bold; width: 250px;">Subject Terms:</td>
+                        <td>@item.subjectTerms</td>
+                    </tr>
+                }
+                @if (@item.geographicCoverage != "")
+                {
+                    <tr>
+                        <td style="font-weight:bold; width: 250px;">Geographic Coverage:</td>
+                        <td>@item.geographicCoverage</td>
+                    </tr> 
+                }                    
+                @if (@item.collectionDate != "")
+                {    
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">Date of Data Collection</span><a href="javascript:void()" class="tooltip" title="When data are reported to ED"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@item.collectionDate</td>
+                    </tr>
+                }
+                @if (@item.periodicity != "")
+                {    
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">Periodicity</span><a href="javascript:void()" class="tooltip" title="How often data are collected"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@item.periodicity</td>
+                    </tr>
+                }
+                @*@if (@item.observationUnit != "")
+                {     
+                    <tr>
+                        <td class="bold">Respondent:</td>
+                        <td>@item.observationUnit</td>
+                    </tr>
+                }*@
+                @if (@item.studyPopulation != "")
+                {       
+                    <tr>
+                        <td class="bold">Study Population:</td>
+                        <td>@Html.Raw(@item.studyPopulation)</td>
+                    </tr>
+                }
+                @if (@item.studyDataTypes != "")
+                {       
+                    <tr>
+                        <td class="bold">Data Types:</td>
+                        <td>@item.studyDataTypes</td>
+                    </tr>
+                }
+                @if (@item.dataCollectionPurpose != "")
+                {    
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">Data Collection Purpose</span><a href="javascript:void()" class="tooltip" title="Reason for participation"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@item.dataCollectionPurpose</td>
+                    </tr>
+                }
+                @if (@item.authorizingLaw != "")
+                {    
+                    <tr>
+                        <td class="bold">Authorizing Law:</td>
+                        <td>@item.authorizingLaw</td>
+                    </tr>
+                }
+                @if (@item.sorn != "")
+                {                                            
+                    <tr>
+                        <td class="bold"><span style="float: left; margin-right: 2px;">System of Record Notice (SORN)</span><a href="javascript:void()" class="tooltip" title="Public notification of the collection of any personally identifying information"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                        <td>@item.sorn</td>
+                    </tr>                                                                            
+                }
+                @if (@item.sornURL != "")
+                {                                            
+                    <tr>
+                        <td class="bold">SORN URL:</td>
+                        <td>@Html.Raw(@item.sornURL)</td>
+                    </tr>                                                                            
+                }
+                @if (@item.targetPopulationAgeRange != "")
+                {                            
+                    <tr class="valign">
+                        <td style="font-weight:bold; width: 250px;">Age Range of Target Population:</td>
+                        <td>@item.targetPopulationAgeRange</td>
+                    </tr>
+                }    
+                @if (@item.targetPopulationEducationLevel != "")
+                {                                                    
+                    <tr class="valign">
+                        <td style="font-weight:bold; width: 250px;">Education Level of Target Population:</td>
+                        <td>@item.targetPopulationEducationLevel</td>
+                    </tr> 
+                }                               
+                </table>
+            </div>
+            <h3>ACCESS NOTES</h3>
+            <div>
+                <table id="tblAccessNotes">
+                    @if (@item.initialReport != "")
+                    {                                            
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Initial Report(s):</td>
+                            <td>@Html.Raw(@item.initialReport)</td>
+                        </tr>
+                    }    
+                    @if (@item.dataAvailability != "")
+                    {    
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;"><span style="float: left; margin-right: 2px;">Data Availability</span><a href="javascript:void()" class="tooltip" title="Date of release and URL for information to access data"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                            <td>@Html.Raw(@item.dataAvailability)</td>
+                        </tr>
+                    }    
+                    @if (@item.restrictedUseDate != "")
+                    {                             
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;"><span style="float: left; margin-right: 2px;">Restricted Use Date</span><a href="javascript:void()" class="tooltip" title="Date when restricted data were or will be first available"><span class="ui-icon ui-icon-info icon orange" style="float: left;"></span></a>:</td>
+                            <td>@item.restrictedUseDate</td>
+                        </tr> 
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Restricted Use URL:</td>
+                            <td><a href="http://nces.ed.gov/statprog/instruct.asp" target="_blank">http://nces.ed.gov/statprog/instruct.asp</a></td>
+                        </tr> 
+                    }    
+                    @if (@item.publicAccessLevel != "")
+                    {                            
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Public Access Level:</td>
+                            <td>@item.publicAccessLevel</td>
+                        </tr>
+                    }   
+@*                    @if (@item.confidentialityRestrictions != "")
+                    {                            
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Access Level Comment:</td>
+                            <td>@item.confidentialityRestrictions</td>
+                        </tr>
+                    }*@
+                    @if (@item.contactName != "")
+                    {                            
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Contact Name:</td>
+                            <td>@item.contactName</td>
+                        </tr>
+                    }
+                    @if (@item.contactEmail != "")
+                    {                            
+                        <tr>
+                            <td style="font-weight:bold; width: 250px;">Contact Email:</td>
+                            <td>@Html.Raw(@item.contactEmail)</td>
+                        </tr>
+                    }
+                </table>
+            </div>                    
+            <h3>STUDY VARIABLES</h3>
+            <div>            
+                @if (@item.searchVariables == true)
+                {     
+                    <div class="inline-block">                     
+                        <div>Search Variables Within Study:&nbsp;</div>
+                        <div><input type="text" size="48" name="txtStudyVarSearchTerm"/></div>
+                        <div class="searchType">
+                            <input type="radio" name="rdStudyVarSearchType" value="And" checked />And<input type="radio" name="rdStudyVarSearchType" value="Or" style="margin-left: 15px;" />Or<input type="radio" name="rdStudyVarSearchType" value="Exact" style="margin-left: 15px;" />Exact Match
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)" id="aSearchStudyVar" style="margin-left: 5px;" title="Search variables within study" class="btnStudyVarSearch">SEARCH</a>
+                        </div>
+                    </div>                                
+                    <div id="divSearchStudyVarMsg" class="message" style="display: none;">Please enter a search term.</div>
+                    <div id="divStudyVarSearchResults"></div>
+                }                
+                else 
+                {
+                    <div class="message">The inclusion of these variables is in progress</div>
+                }                    
+            </div>
+            <h3>STUDY FILES</h3>
+            <div>
+                @{Html.RenderAction("GetStudyFile", "StudyFile", new { studyID = @item.studyID, studyType = @ViewBag.studyType });}
+            </div> 
+            <h3>METHODOLOGY</h3>
+            <div>
+                @{Html.RenderAction("GetStudyQuestionnaire", "StudyQuestionnaire", new { studyID = @item.studyID, studyType = @ViewBag.studyType });}
+            </div> 
+        </div>
+    }    
+}
+else {
+    <div id="divSeriesStudy">        
+        @{Html.RenderAction("GetSeriesStudy", "SeriesStudy", new { seriesID = ViewBag.seriesID });}
+    </div>
+}
+

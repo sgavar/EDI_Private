@@ -1,0 +1,49 @@
+﻿@model List<SearchSeriesStudyViewModel>
+
+<div class="searchResults">
+    <a href="javascript:void(0)" id="aStudyVarAll">Expand All</a><span style="margin: 0 10px 0 10px; color: #f9bd01;">|</span>
+    <a href="javascript:void(0)" id="aSortSeries">Sort Descending</a><span style="margin: 0 10px 0 10px; color: #f9bd01;">|</span>
+    @Model.Count() series @if (@Model.Count() == 1) { <text>matches</text> } else { <text>match</text> } your query
+</div>
+
+<div id="containerMainSearchResults">
+    <table id="tblSearchResults" class="tablesorter" style="margin: 2px;">
+        <thead style="display: none;">
+            <tr>
+                <th>Series Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {   
+                <tr>
+                    <td style="padding: 3px 0 5px 0;">                      
+                        <div style="margin: 0 8px;" class="bold"><a href="@Request.RawUrl&seriesID=@item.series.seriesID" class="aSeries" id="@item.series.seriesID">@item.series.seriesName</a></div>
+                        <div style="margin-left: 8px;"><a href="javascript:void(0)" class="aStudyVar"><span class="ui-icon ui-icon-circle-plus icon"></span>@item.studyList.Count() @if (@item.studyList.Count() == 1) { <text>study matches </text> } else { <text>studies match</text> } your query</a></div>
+                        <div style="margin-top: 8px;">
+                            @foreach (var study in item.studyList)                                                  
+                            {
+                                <div class="studyVar" style="display: none; background-color: #f3f3eb; padding-top: 5px;">
+                                    <div style="margin-left: 22px;">
+                                        <a href="@Request.RawUrl&seriesID=@item.series.seriesID&studyID=@study.studyID" id="@study.studyID" class="aStudy">@study.studyName</a>
+
+                                        @if (@study.variableCount > 0)
+                                        {
+                                            <span class="ui-icon ui-icon-triangle-1-e icon orange"></span><span>@study.variableCount <a href="javascript:void(0)" class="aStudyVariable">@if (@study.variableCount == 1) { <text>variable</text> } else { <text>variables</text> }</a> @if (@study.variableCount == 1) { <text>matches</text> } else { <text>match</text> } your query</span>
+                                        } 
+                                    </div>
+                                    <div class="studyVarLine"></div> 
+                                </div>                                    
+                            }
+                            <div style="border-top: 1px solid #d5d5cb;"></div>                                       
+                        </div>
+                    </td>
+                </tr>   
+            }
+        </tbody>
+    </table> 
+    <p></p>  <div style="margin: 10px 0px 15px 8px;">
+        <a href="#aStudyVarAll"><span class="ui-icon ui-icon-circle-arrow-n icon"></span>BACK TO TOP</a>
+    </div> 
+   
+</div>

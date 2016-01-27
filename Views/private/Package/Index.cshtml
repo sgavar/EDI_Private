@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/private/_PackagesLayout.cshtml";
+}
+
+@model List<DataInventory.Private.Models.PackageViewModel>
+
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblPackages">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdPackageID" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 160px;">ICRAS:</td>
+            <td>@item.ICRAS</td>
+        </tr>
+        <tr>
+            <td class="bold">EDICS:</td>
+            <td>@item.EDICS</td>
+        </tr>
+        <tr>
+            <td class="bold">ICR ReferenceNumber:</td>
+            <td>@item.ICRReferenceNumber</td>
+        </tr>
+        <tr>
+            <td class="bold">OMB Control Number:</td>
+            <td>@item.OMBControlNumber</td>
+        </tr>
+
+        <tr>
+            <td class="bold">CFDA:</td>
+            <td>@item.CFDA</td>
+        </tr>
+        <tr>
+            <td class="bold">Keywords:</td>
+            <td>@item.Keywords</td>
+        </tr>
+        <tr>
+            <td class="bold">Abstract:</td>
+            <td>@item.Abstract</td>
+        </tr>
+        <tr>
+            <td class="bold">Purpose:</td>
+            <td>@item.Purpose</td>
+        </tr>
+        <tr>
+            <td class="bold">Issue Date:</td>
+            <td>@item.IssueDate</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Expiration Date:</td>
+            <td>@item.ExpirationDate</td>
+        </tr>
+
+
+        <tr>
+            <td class="bold">Notice Type:</td>
+            <td>@item.NoticeType</td>
+        </tr>
+        <tr>
+            <td class="bold">TermsOfClearance:</td>
+            <td>@item.TermsOfClearance</td>
+        </tr>
+        <tr>
+            <td class="bold">Number Respondents:</td>
+            <td>@item.NumberRespondents</td>
+        </tr>
+        <tr>
+            <td class="bold">Number Responses:</td>
+            <td>@item.NumberResponses</td>
+        </tr>
+        <tr>
+            <td class="bold">Percent Collected Electronically:</td>
+            <td>@item.PercentCollectedElectronically</td>
+        </tr>
+        <tr>
+            <td class="bold">Burden Total:</td>
+            <td>@item.BurdenTotal</td>
+        </tr>
+        <tr>
+            <td class="bold">Burden Change:</td>
+            <td>@item.BurdenChange</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Burden Adjustment:</td>
+            <td>@item.BurdenAdjustment</td>
+        </tr>
+        <tr>
+            <td class="bold">Burden Explanation:</td>
+            <td>@item.BurdenExplanation</td>
+        </tr>
+        <tr>
+            <td class="bold">Public Comment:</td>
+            <td>@item.PublicComment</td>
+        </tr>
+        <tr>
+            <td class="bold">OMB Passback:</td>
+            <td>@item.OMBPassback</td>
+        </tr>
+        <tr>
+            <td class="bold">Authorizing Law Cited:</td>
+            <td>@item.AuthorizingLawCited</td>
+        </tr>
+        <tr>
+            <td class="bold">Authorizing Law Text:</td>
+            <td>@item.AuthorizingLawText</td>
+        </tr>
+        <tr>
+            <td class="bold">Contractor Confidentiality Form Location:</td>
+            <td>@item.ContractorConfidentialityFormLocation</td>
+        </tr>
+        <tr>
+            <td class="bold">Activities:</td>
+            <td>@Html.Raw(@item.Activities)</td>
+        </tr>
+    </table>
+
+}

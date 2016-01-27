@@ -1,0 +1,67 @@
+﻿@model List<StudyVariableViewModel>
+
+@using (Html.BeginForm("Export", "StudyVariable", FormMethod.Post, new { @id = "exportStudyVar" }))
+{
+    foreach (var item in Model)
+    {         
+        if (@item.variableList.Count() > 0) 
+        {   
+            <div style="margin: 10px 0 8px 0;" class="inline-block">
+                <div><input name="submit" type="submit" id="aStudyVarCSV" value="Export To CSV" class="exportToCSV" /><span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span></div>
+                <div><a href="javascript:void(0)" id="aStudyVarValueAll">Expand All Value Labels</a><span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span></div>
+                <div>@ViewBag.totalRows @if (@ViewBag.totalRows == 1) { <text>variable matches</text> } else { <text>variables match</text> } your query<span style="margin: 0 5px 0 5px; color: #f9bd01;">|</span></div>
+                <div><a href="javascript:void(0)" id="aStudyVarFirst"><span id="iconStudyVarFirst" class="ui-icon ui-icon-seek-first icon" style="margin-bottom: -3px;"></span></a></div>
+                <div><a href="javascript:void(0)" id="aStudyVarPrev"><span id="iconStudyVarPrev" class="ui-icon ui-icon-seek-prev icon" style="margin-bottom: -3px;"></span></a></div>
+		        <div><span>Displaying variables @ViewBag.firstRow to @ViewBag.lastRow</span></div>
+		        <div><a href="javascript:void(0)" id="aStudyVarNext"><span id="iconStudyVarNext" class="ui-icon ui-icon-seek-next icon" style="margin-bottom: -3px;"></span></a></div>
+		        <div><a href="javascript:void(0)" id="aStudyVarLast"><span id="iconStudyVarLast" class="ui-icon ui-icon-seek-end icon" style="margin-bottom: -3px;"></span></a></div>
+                <input type="hidden" value="@ViewBag.lastPage" id="hdStudyVarLastPage" /> 
+                <input type="hidden" value="@item.study.studyID" name="hdnStudyID" />
+                <input type="hidden" value="@ViewBag.searchTerm" name="hdSearchTerm" /> 
+                <input type="hidden" value="@ViewBag.searchType" name="hdSearchType" />
+            </div>
+
+            <div id="containerSearchResults">
+                <table id="tblStudyVarSearchResults" style="border-collapse: separate; border-spacing: 1px; margin: 0;" class="sortableTable">
+                    <thead>
+                        <tr style="background-color: #dfeffc;">
+                            <th><input type="checkbox" id="cbStudyVarAll" name="cbStudyVarAll"/></th>
+                            <th class="bold"><a href="javascript:void(0)" id="aStudyVarName">Variable Name <span class="ui-icon ui-icon-triangle-1-n" style="margin: auto;"></span></a></th>
+                            <th class="bold"><a href="javascript:void(0)" id="aStudyVarLabel">Variable Label <span class="ui-icon ui-icon-triangle-2-n-s" style="margin: auto;"></span></a></th>
+                            <th class="bold"><a href="javascript:void(0)" id="aStudyVarExtDef">Variable Extended Definition <span class="ui-icon ui-icon-triangle-2-n-s" style="margin: auto;"></span></a></th>
+                            <th class="bold"><a href="javascript:void(0)" id="aStudyVarDetail">Variable Detail <span class="ui-icon ui-icon-triangle-2-n-s" style="margin: auto;"></span></a></th>
+                            <th class="bold"><a href="javascript:void(0)" id="aStudyVarFile">File Name <span class="ui-icon ui-icon-triangle-2-n-s" style="margin: auto;"></span></a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var variable in item.variableList)
+                    {
+                        <tr style="vertical-align:text-top; background-color: #EDECE1;">    
+                            <td><input type="checkbox" class="cbStudyVar" value="@variable.variableID" name="cbStudyVariable" /></td>                                                                           
+                            <td>@variable.variableName</td>
+                            <td>@Html.Raw(@variable.variableLabel)</td>
+                            <td>@Html.Raw(@variable.variableExtendedDefn)</td>
+                            <td>@Html.Raw(@variable.variableDetail)
+                                <div>
+                                    @if (@variable.valueList != "") 
+                                    {           
+                                        <div style="margin-top: 8px;"><a href="javascript:void(0)" class="aStudyVarValue"><span class="ui-icon ui-icon-circle-plus icon"></span>Value Labels</a></div>
+    
+                                        <div class="divStudyVarValue" style="display: none; margin-top: 3px;">                                    
+                                            @Html.Raw(@variable.valueList)
+                                        </div>
+                                    } 
+                                </div>
+                            </td>   
+                            <td>@Html.Raw(@variable.fileList)</td>     
+                        </tr>
+                    }    
+                    </tbody>
+                </table>     
+            </div>     
+        }                  
+        else {
+            <div class="message">0 variables match your query</div>
+        }           
+    }    
+}    

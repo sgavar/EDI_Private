@@ -1,0 +1,6 @@
+﻿@model List<SeriesStudyViewModel>
+
+@foreach (var item in Model)
+{   
+    @Html.Raw(@item.studyList)
+}

@@ -1,0 +1,221 @@
+﻿@{
+    Layout = "~/Views/Shared/private/_RespondentsLayout.cshtml";
+}
+
+@model List<DataInventory.Private.Models.RespondentViewModel>
+
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblRespondents">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdRespondentID" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 160px;">Parent Id:</td>
+            <td>@item.Parent.Id</td>
+        </tr>
+        <tr>
+            <td class="bold">Parent Name:</td>
+            <td>@item.Parent.Name</td>
+        </tr>
+        <tr>
+            <td class="bold">Type:</td>
+            <td>@item.Type</td>
+        </tr>
+        <tr>
+            <td class="bold">Description:</td>
+            <td>@item.Description</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Keywords:</td>
+            <td>@item.Keywords</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Voluntary:</td>
+            <td>@item.ResponseVoluntary</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Mandatory:</td>
+            <td>@item.ResponseMandatory</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Required For Benefits:</td>
+            <td>@item.ResponseRequiredForBenefits</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Requirement Description:</td>
+            <td>@item.ResponseRequirementDescription</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Response Requirement Reason:</td>
+            <td>@item.ResponseRequirementReason</td>
+        </tr>
+
+
+        <tr>
+            <td class="bold">Population Size Estimated:</td>
+            <td>@item.PopulationSizeEstimated</td>
+        </tr>
+        <tr>
+            <td class="bold">Population Size:</td>
+            <td>@item.PopulationSize</td>
+        </tr>
+        <tr>
+            <td class="bold">Population Size Description:</td>
+            <td>@item.PopulationSizeDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Size Estimate:</td>
+            <td>@item.ResponseSizeEstimate</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Size:</td>
+            <td>@item.ResponseSize</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Rate Estimated:</td>
+            <td>@item.ResponseRateEstimated</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Rate:</td>
+            <td>@item.ResponseRate</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Response Rate Description:</td>
+            <td>@item.ResponseRateDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Burden:</td>
+            <td>@item.Burden</td>
+        </tr>
+        <tr>
+            <td class="bold">Burden Per Respondent:</td>
+            <td>@item.BurdenPerRespondent</td>
+        </tr>
+
+
+        <tr>
+            <td class="bold">Burden Per Respondent Assessment:</td>
+            <td>@item.BurdenPerRespondentAssessment</td>
+        </tr>
+        <tr>
+            <td class="bold">Consent Explicit:</td>
+            <td>@item.ConsentExplicit</td>
+        </tr>
+        <tr>
+            <td class="bold">Consent Implicit:</td>
+            <td>@item.ConsentImplicit</td>
+        </tr>
+        <tr>
+            <td class="bold">Consent Not Applicable:</td>
+            <td>@item.ConsentNotApplicable</td>
+        </tr>
+        <tr>
+            <td class="bold">Consent Forms:</td>
+            <td>@item.ConsentForms</td>
+        </tr>
+        <tr>
+            <td class="bold">Population:</td>
+            <td>@item.Population</td>
+        </tr>
+        <tr>
+            <td class="bold">Population Description:</td>
+            <td>@item.PopulationDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">ResponseType:</td>
+            <td>@item.ResponseType</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Type Description:</td>
+            <td>@item.ResponseTypeDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">RResponse Mode Primary:</td>
+            <td>@item.ResponseModePrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">ResponseModeNonPrimary:</td>
+            <td>@item.ResponseModeNonPrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Mode Other:</td>
+            <td>@item.ResponseModeOther</td>
+        </tr>
+        <tr>
+            <td class="bold">Response Mode Description:</td>
+            <td>@item.ResponseModeDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">AdditionalLanguageInstrument:</td>
+            <td>@item.AdditionalLanguageInstrument</td>
+        </tr>
+        <tr>
+            <td class="bold">Additional Language Interpreter:</td>
+            <td>@item.AdditionalLanguageInterpreter</td>
+        </tr>
+        <tr>
+            <td class="bold">Incentive Cash Value:</td>
+            <td>@item.IncentiveCashValue</td>
+        </tr>
+        <tr>
+            <td class="bold">Incentive Cash Description:</td>
+            <td>@item.IncentiveCashDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Incentive Non CashValue:</td>
+            <td>@item.IncentiveNonCashValue</td>
+        </tr>
+        <tr>
+            <td class="bold">Incentive Non Cash Description:</td>
+            <td>@item.IncentiveNonCashDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Incentive Justification:</td>
+            <td>@item.IncentiveJustification</td>
+        </tr>
+        <tr>
+            <td class="bold">Confidentiality Law:</td>
+            <td>@item.ConfidentialityLaw</td>
+        </tr>
+        <tr>
+            <td class="bold">Voluntary Confidential Statement Instrument:</td>
+            <td>@item.VoluntaryConfidentialStatementInstrument</td>
+        </tr>
+        <tr>
+            <td class="bold">Voluntary Confidential Statement ContactMaterial:</td>
+            <td>@item.VoluntaryConfidentialStatementContactMaterial</td>
+        </tr>
+        <tr>
+            <td class="bold">Voluntary Confidential StatementFaq:</td>
+            <td>@item.VoluntaryConfidentialStatementFaq</td>
+        </tr>
+        <tr>
+            <td class="bold">Voluntary Confidential Statement Brochure:</td>
+            <td>@item.VoluntaryConfidentialStatementBrochure</td>
+        </tr>
+        <tr>
+            <td class="bold">Follow Up Informed Consent Statement:</td>
+            <td>@item.FollowUpInformedConsentStatement</td>
+        </tr>
+        <tr>
+            <td class="bold">Follow Up Informed Consent Location:</td>
+            <td>@item.FollowUpInformedConsentLocation</td>
+        </tr>
+        <tr>
+            <td class="bold">Paperwork Reduction Act Statement:</td>
+            <td>@item.PaperworkReductionActStatement</td>
+        </tr>
+        <tr>
+            <td class="bold">Paperwork Reduction Act Location:</td>
+            <td>@item.PaperworkReductionActLocation</td>
+        </tr>
+    </table>
+
+}

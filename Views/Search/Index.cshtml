@@ -1,0 +1,63 @@
+﻿<div id="ajaxSearchWait"></div>
+<div class="containerSearch" >
+    <div id="divSearch">
+        @if (ViewBag.showAdvanced == true && ViewBag.showHelp == false) {
+            <div id="aSearchCriteria">
+                <div id="divSearchSteps" >
+                    <div id="divSearchStepOne" class="roundedBox">
+                        <span class="searchStepNum"><strong>1</strong></span><span class="ui-icon ui-icon-triangle-1-e icon orange" style="float: left;"></span><span class="searchStep">Enter search term</span>
+                        <p><input type="text" size="50" name="txtSearchTerm" value="@ViewBag.searchTerm"/></p>                    
+                    </div>
+                    <div id="divSearchStepTwo" class="roundedBox">
+                        <span class="searchStepNum"><strong>2</strong></span><span class="ui-icon ui-icon-triangle-1-e icon orange" style="float: left;"></span><span class="searchStep">Select search operator</span>
+                        <p><input type="radio" name="rdSearchType" value="And" @if (@ViewBag.searchType == "And" || string.IsNullOrWhiteSpace(@ViewBag.searchType)) { <text>checked</text> } />And<input type="radio" name="rdSearchType" value="Or" style="margin-left: 15px;" @if (@ViewBag.searchType == "Or") { <text> checked</text> } />Or<input type="radio" name="rdSearchType" value="Exact" style="margin-left: 15px;" @if (@ViewBag.searchType == "Exact" || string.IsNullOrWhiteSpace(@ViewBag.searchType)) { <text> checked</text> } />Exact Match</p>
+                    </div>
+                    <div id="divSearchStepThree" class="roundedBox lastStep">
+                        <span class="searchStepNum"><strong>3</strong></span><span class="ui-icon ui-icon-triangle-1-e icon orange" style="float: left;"></span><span class="searchStep">Click search button</span>
+                        <p><button type="submit" id="aSearchData" title="Search inventory" class="btnSearch" style="font-family: 'Open Sans',sans-serif !important; font-size: 1em;">SEARCH</button></p>
+                    </div>
+                </div>
+                <div id="divSearchMsg" class="message" style="display: none;">Please enter a search term.</div>
+                @if (string.IsNullOrWhiteSpace(@ViewBag.searchTerm)) {
+                <div id="divSearchTips" class="roundedBox" style="width: auto;">
+                    <div class="wwwText">
+                        <strong>Search Tips</strong><br />
+                    </div>
+                    <p><strong>Advanced search</strong> allows you to select the boolean search operator to be used in your query: “And”, “Or” or “Exact Match”.</p>
+                    <span class="searchStep">To perform an advanced search:</span>
+                    <ul id="listSearchTips">
+                        <li>Enter search term, e.g., “Time Use”</li>
+                        <li>Select search operator   
+                            <ul id="listSearchOperators">
+                                <li>“And” – Narrows the search to include data containing <strong>all</strong> keywords, e.g., “Time” and “Use”</li>
+                                <li>“Or” – Broadens the search to include data containing <strong>any</strong> keywords, e.g., “Time” or “Use”.</li>                                    
+                                <li>“Exact Match” – Narrows the search to include data containing the <strong>exact</strong> search term, e.g., “Time Use”</li>                                 
+                            </ul>                            
+                        </li>  
+                        <li>Click search button</li>
+                    </ul>
+                    <p>
+                        <span class="searchStep">Search results explained</span><br />
+                        Search results show all series that match your query, as well as the number of studies within each series that contained the search term. If you can’t find the term you were searching for among the returned results, click on the “Expand All” link to reveal studies and variables that match your query.
+                    </p>
+                </div>
+                }
+            </div>
+        }         
+        @if (@ViewBag.showHelp == true)
+        {
+            <div class="message" style="width: 300px;">Please enter a search term in the text box located on the upper right-hand corner of the toolbar.</div>
+        }
+        else {
+            <div id="divSearchResults">
+                @{Html.RenderAction("SearchData", "Search", new { searchTerm = ViewBag.searchTerm, searchType = ViewBag.searchType });}
+            </div>
+        }
+    </div>          
+    <input type="hidden" value="@ViewBag.seriesID" id="hdSlideSeriesID" />                
+    <input type="hidden" value="@ViewBag.studyID" id="hdSlideStudyID" />                
+    <input type="hidden" value="@ViewBag.searchTerm" id="hdSlideSearchTerm" />
+    <input type="hidden" value="@ViewBag.searchType" id="hdSlideSearchType" />
+    <input type="hidden" value="@ViewBag.studyType" id="hdSlideStudyType" />
+    <div id="divDetail" style="display: none;"></div>
+</div>

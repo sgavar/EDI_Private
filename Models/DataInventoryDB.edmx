@@ -1,0 +1,1579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DataInventoryDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DataInventoryDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="DataInventoryDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCollection" EntityType="DataInventoryDBModel.Store.tblCollection" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblContact" EntityType="DataInventoryDBModel.Store.tblContact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblData" EntityType="DataInventoryDBModel.Store.tblData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDataset$" EntityType="DataInventoryDBModel.Store.tblDataset$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDetail" EntityType="DataInventoryDBModel.Store.tblDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDFLink$" EntityType="DataInventoryDBModel.Store.tblDFLink$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblElement$" EntityType="DataInventoryDBModel.Store.tblElement$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblElementData" EntityType="DataInventoryDBModel.Store.tblElementData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblEVLink$" EntityType="DataInventoryDBModel.Store.tblEVLink$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFELink$" EntityType="DataInventoryDBModel.Store.tblFELink$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFile$" EntityType="DataInventoryDBModel.Store.tblFile$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFollow-Up" EntityType="DataInventoryDBModel.Store.tblFollow-Up" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblProgram" EntityType="DataInventoryDBModel.Store.tblProgram" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblRespondent" EntityType="DataInventoryDBModel.Store.tblRespondent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSDLink$" EntityType="DataInventoryDBModel.Store.tblSDLink$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblStudy" EntityType="DataInventoryDBModel.Store.tblStudy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblValue$" EntityType="DataInventoryDBModel.Store.tblValue$" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblValueData" EntityType="DataInventoryDBModel.Store.tblValueData" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblCollection">
+          <Key>
+            <PropertyRef Name="Collection ID" />
+          </Key>
+          <Property Name="Collection ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Detail ID" Type="int" />
+          <Property Name="Collection Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Collection Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Collection Start Date (Planned)" Type="nvarchar" MaxLength="50" />
+          <Property Name="Collection Start Date (Actual)" Type="nvarchar" MaxLength="50" />
+          <Property Name="Collection End Date (Planned)" Type="nvarchar" MaxLength="50" />
+          <Property Name="Collection End Date (Actual)" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="Contact ID" />
+          </Key>
+          <Property Name="Contact ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Contact First Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Contact Last Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Contact Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Contact Phone" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblData">
+          <Key>
+            <PropertyRef Name="Data ID" />
+          </Key>
+          <Property Name="Data ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Program ID" Type="int" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Searchable Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblDataset$">
+          <Key>
+            <PropertyRef Name="Dataset ID" />
+          </Key>
+          <Property Name="Dataset ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Dataset Title" Type="varchar" MaxLength="255" />
+          <Property Name="Dataset Location" Type="varchar" MaxLength="255" />
+          <Property Name="Dataset Location Detail" Type="varchar" MaxLength="800" />
+          <Property Name="Dataset Restriction" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDetail">
+          <Key>
+            <PropertyRef Name="Detail ID" />
+          </Key>
+          <Property Name="Detail ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Follow-Up ID" Type="int" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="Steward" Type="nvarchar(max)" />
+          <Property Name="Universe Survey" Type="bit" />
+          <Property Name="Sample Survey" Type="bit" />
+          <Property Name="Cross-Sectional" Type="bit" />
+          <Property Name="Longitudinal" Type="bit" />
+          <Property Name="Voluntary" Type="bit" />
+          <Property Name="Mandatory" Type="bit" />
+          <Property Name="Required for Benefits" Type="bit" />
+          <Property Name="Requirement Reason" Type="nvarchar(max)" />
+          <Property Name="Program Monitoring" Type="bit" />
+          <Property Name="Grantee Reports" Type="bit" />
+          <Property Name="Authorizing Law" Type="nvarchar(max)" />
+          <Property Name="SORN" Type="nvarchar" MaxLength="255" />
+          <Property Name="Could Be Public" Type="bit" />
+          <Property Name="Publication Date (Stats)" Type="nvarchar" MaxLength="50" />
+          <Property Name="Publication Type (Stats)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Publication URL (Stats)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Publication Date (Data)" Type="varchar" MaxLength="10" />
+          <Property Name="Publication URL (Data)" Type="varchar" MaxLength="255" />
+          <Property Name="Restricted-Use Date" Type="varchar" MaxLength="10" />
+          <Property Name="Planned Restricted Data" Type="bit" />
+          <Property Name="Students" Type="int" />
+          <Property Name="Staff" Type="int" />
+          <Property Name="Institutions" Type="int" />
+          <Property Name="Programs" Type="int" />
+          <Property Name="Other Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age 0-2" Type="int" />
+          <Property Name="Age 3-5" Type="int" />
+          <Property Name="Age 6-21" Type="int" />
+          <Property Name="Age Older Than 21" Type="int" />
+          <Property Name="Age NA" Type="int" />
+          <Property Name="Pre-K" Type="int" />
+          <Property Name="Elementary" Type="int" />
+          <Property Name="Middle" Type="int" />
+          <Property Name="High School" Type="int" />
+          <Property Name="Postsecondary" Type="int" />
+          <Property Name="Graduate" Type="int" />
+          <Property Name="Continued Technical Ed" Type="int" />
+          <Property Name="Adult Education" Type="int" />
+          <Property Name="General Adult" Type="int" />
+          <Property Name="Education Level NA" Type="int" />
+          <Property Name="Other Population" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subject Population Detail" Type="nvarchar(max)" />
+          <Property Name="School/Institution Data" Type="bit" />
+          <Property Name="LEA Data" Type="bit" />
+          <Property Name="State Data" Type="bit" />
+          <Property Name="Region Data" Type="bit" />
+          <Property Name="National Data" Type="bit" />
+          <Property Name="Other Data Level" Type="nvarchar" MaxLength="255" />
+          <Property Name="Bureau Code" Type="nvarchar(max)" />
+          <Property Name="Program Code" Type="nvarchar(max)" />
+          <Property Name="JSON Unique Identifier" Type="nvarchar(max)" />
+          <Property Name="SORN URL" Type="nvarchar(max)" />
+          <Property Name="Public Access Level" Type="nvarchar(max)" />
+          <Property Name="Confidentiality Restrictions" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblDFLink$">
+          <Key>
+            <PropertyRef Name="DF Link ID" />
+          </Key>
+          <Property Name="DF Link ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SD Link ID" Type="uniqueidentifier" />
+          <Property Name="File ID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tblElement$">
+          <Key>
+            <PropertyRef Name="Element ID" />
+          </Key>
+          <Property Name="Element ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Element Name" Type="nvarchar(max)" />
+          <Property Name="Element Label" Type="nvarchar(max)" />
+          <Property Name="Element Extended Definition" Type="nvarchar(max)" />
+          <Property Name="Element Question" Type="nvarchar(max)" />
+          <Property Name="Element Type" Type="nvarchar(max)" />
+          <Property Name="Vector" Type="int" />
+          <Property Name="EDFacts" Type="int" />
+          <Property Name="IDEA" Type="int" />
+        </EntityType>
+        <EntityType Name="tblElementData">
+          <Key>
+            <PropertyRef Name="Data ID" />
+          </Key>
+          <Property Name="Data ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Program ID" Type="int" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Element ID" Type="uniqueidentifier" />
+          <Property Name="Element Name" Type="nvarchar(max)" />
+          <Property Name="Element Label" Type="nvarchar(max)" />
+          <Property Name="Element Extended Definition" Type="nvarchar(max)" />
+          <Property Name="Element Question" Type="nvarchar(max)" />
+          <Property Name="Searchable Data" Type="nvarchar(max)" />
+          <Property Name="Value Data" Type="nvarchar(max)" />
+          <Property Name="Value Count" Type="int" />
+          <Property Name="File List" Type="nvarchar(max)" />
+          <Property Name="File List Export" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblEVLink$">
+          <Key>
+            <PropertyRef Name="EV Link ID" />
+          </Key>
+          <Property Name="EV Link ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FE Link ID" Type="uniqueidentifier" />
+          <Property Name="Value ID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tblFELink$">
+          <Key>
+            <PropertyRef Name="FE Link ID" />
+          </Key>
+          <Property Name="FE Link ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DF Link ID" Type="uniqueidentifier" />
+          <Property Name="Element ID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tblFile$">
+          <Key>
+            <PropertyRef Name="File ID" />
+          </Key>
+          <Property Name="File ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="File Name" Type="varchar" MaxLength="255" />
+          <Property Name="File Format" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblFollow-Up">
+          <Key>
+            <PropertyRef Name="Follow-Up ID" />
+          </Key>
+          <Property Name="Follow-Up ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Follow-Up Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Follow-Up Abbreviation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Follow-up Abstract" Type="nvarchar(max)" />
+          <Property Name="Longitudinal Follow-Up" Type="int" />
+          <Property Name="Preceding Follow-Up ID" Type="int" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Subject Terms List" Type="nvarchar(max)" />
+          <Property Name="Collection Date List" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblProgram">
+          <Key>
+            <PropertyRef Name="Program ID" />
+          </Key>
+          <Property Name="Program ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Division ID" Type="int" />
+          <Property Name="Program Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 1 Duration" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 2 Duration" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Abbreviation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 1 Abbr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Old Name 2 Abbr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Program Description" Type="nvarchar(max)" />
+          <Property Name="Primary Contact ID" Type="int" />
+          <Property Name="2nd Contact ID" Type="int" />
+          <Property Name="3rd Contact ID" Type="int" />
+          <Property Name="Supervisor ID" Type="int" />
+          <Property Name="Study List" Type="nvarchar(max)" />
+          <Property Name="Steward List" Type="nvarchar(max)" />
+          <Property Name="Search Variables" Type="bit" />
+          <Property Name="Study Count" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRespondent">
+          <Key>
+            <PropertyRef Name="Respondent ID" />
+          </Key>
+          <Property Name="Respondent ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Collection ID" Type="int" />
+          <Property Name="Respondent Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Respondent Type Detail" Type="nvarchar" MaxLength="255" />
+          <Property Name="Topics" Type="nvarchar(max)" />
+          <Property Name="Expected Sample Size" Type="int" />
+          <Property Name="Actual Sample Size" Type="int" />
+          <Property Name="Response Rate Estimated" Type="float" />
+          <Property Name="Response Rate Actual" Type="float" />
+          <Property Name="Final Data Format" Type="nvarchar" MaxLength="255" />
+          <Property Name="Required Response Detail" Type="nvarchar(max)" />
+          <Property Name="Response Requirement Reason" Type="nvarchar(max)" />
+          <Property Name="Explicit Consent" Type="bit" />
+          <Property Name="Implicit Consent" Type="bit" />
+          <Property Name="VC Language IC" Type="nvarchar(max)" />
+          <Property Name="Respondent Age 0-2" Type="bit" />
+          <Property Name="Respondent Age 3-5" Type="bit" />
+          <Property Name="Respondent Age 6-21" Type="bit" />
+          <Property Name="Respondent Age Older Than 21" Type="bit" />
+          <Property Name="Respondent Age NA" Type="bit" />
+          <Property Name="Respondent Pre-K" Type="bit" />
+          <Property Name="Respondent Elementary" Type="bit" />
+          <Property Name="Respondent Middle" Type="bit" />
+          <Property Name="Respondent High School" Type="bit" />
+          <Property Name="Respondent Postsecondary" Type="bit" />
+          <Property Name="Respondent Graduate" Type="bit" />
+          <Property Name="Respondent Continued Technical Ed" Type="bit" />
+          <Property Name="Respondent Adult Education" Type="bit" />
+          <Property Name="Respondent Education Level NA" Type="bit" />
+          <Property Name="Respondent Other Population" Type="nvarchar" MaxLength="255" />
+          <Property Name="Respondent Population Detail" Type="nvarchar(max)" />
+          <Property Name="Administrative Records" Type="bit" />
+          <Property Name="Address Update" Type="bit" />
+          <Property Name="List Data" Type="bit" />
+          <Property Name="Recruitment" Type="bit" />
+          <Property Name="Coordination Help" Type="bit" />
+          <Property Name="Screener" Type="bit" />
+          <Property Name="Assessment" Type="bit" />
+          <Property Name="Survey" Type="bit" />
+          <Property Name="Abbreviated Survey" Type="bit" />
+          <Property Name="Program Reporting" Type="bit" />
+          <Property Name="EDFacts" Type="bit" />
+          <Property Name="CPS" Type="bit" />
+          <Property Name="NSLDS" Type="bit" />
+          <Property Name="Other Response Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Paper" Type="int" />
+          <Property Name="Phone (Not CATI)" Type="int" />
+          <Property Name="CATI" Type="int" />
+          <Property Name="Web" Type="int" />
+          <Property Name="Email" Type="int" />
+          <Property Name="F2F (Not CAPI)" Type="int" />
+          <Property Name="CAPI" Type="int" />
+          <Property Name="Spreadsheet" Type="int" />
+          <Property Name="PRS" Type="int" />
+          <Property Name="Other Collection Mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Collection Mode Detail" Type="nvarchar(max)" />
+          <Property Name="Other Languages" Type="nvarchar" MaxLength="255" />
+          <Property Name="Interpreters" Type="nvarchar" MaxLength="255" />
+          <Property Name="Feasibility Calls" Type="bit" />
+          <Property Name="Pretest" Type="bit" />
+          <Property Name="Cog Labs" Type="bit" />
+          <Property Name="Focus Groups" Type="bit" />
+          <Property Name="PIlot Test" Type="bit" />
+          <Property Name="Field Test" Type="bit" />
+          <Property Name="Program ID" Type="int" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Follow-up ID" Type="int" />
+          <Property Name="Authorizing Law" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblSDLink$">
+          <Key>
+            <PropertyRef Name="SD Link ID" />
+          </Key>
+          <Property Name="SD Link ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Dataset ID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tblStudy">
+          <Key>
+            <PropertyRef Name="Study ID" />
+          </Key>
+          <Property Name="Study ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Program ID" Type="int" />
+          <Property Name="Study Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 1 Duration" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 2 Duration" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Abbreviation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 1 Abbr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Old Name 2 Abbr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Study Website" Type="nvarchar(max)" />
+          <Property Name="Study Abstract" Type="nvarchar(max)" />
+          <Property Name="Frequency" Type="nvarchar(max)" />
+          <Property Name="Most Recent Year" Type="nvarchar" MaxLength="255" />
+          <Property Name="Releasable" Type="bit" />
+          <Property Name="Steward List" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Geographic Coverage List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Observation Unit List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Population List" Type="nvarchar(max)" />
+          <Property Name="Data Types List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Data Collection Purpose List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Authorizing Law List" Type="nvarchar" MaxLength="255" />
+          <Property Name="SORN List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Target Population Age Range List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Target Population Education Level List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subject Terms List" Type="nvarchar(max)" />
+          <Property Name="Initial Report List" Type="nvarchar" MaxLength="1200" />
+          <Property Name="Data Availability List" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Restricted Use Date List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Could Be Public List" Type="nvarchar" MaxLength="50" />
+          <Property Name="Collection Date List" Type="nvarchar" MaxLength="255" />
+          <Property Name="Search Variables" Type="bit" />
+          <Property Name="Bureau Code List" Type="nvarchar(max)" />
+          <Property Name="Program Code List" Type="nvarchar(max)" />
+          <Property Name="JSON Unique Identifier List" Type="nvarchar(max)" />
+          <Property Name="SORN URL List" Type="nvarchar(max)" />
+          <Property Name="Public Access Level List" Type="nvarchar(max)" />
+          <Property Name="Confidentiality Restrictions List" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblValue$">
+          <Key>
+            <PropertyRef Name="Value ID" />
+          </Key>
+          <Property Name="Value ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value Option" Type="nvarchar(max)" />
+          <Property Name="Value Label" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblValueData">
+          <Key>
+            <PropertyRef Name="Data ID" />
+          </Key>
+          <Property Name="Data ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Program ID" Type="int" />
+          <Property Name="Study ID" Type="int" />
+          <Property Name="Element ID" Type="uniqueidentifier" />
+          <Property Name="Value ID" Type="uniqueidentifier" />
+          <Property Name="Searchable Data" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspExportFileVariable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fileID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="studyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspExportSeriesVariable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="variableList" Type="varchar(max)" Mode="In" />
+          <Parameter Name="cbSeriesVarAll" Type="varchar" Mode="In" />
+          <Parameter Name="seriesID" Type="int" Mode="In" />
+          <Parameter Name="searchTerm" Type="varchar(max)" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspExportStudyVariable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studyID" Type="int" Mode="In" />
+          <Parameter Name="variableList" Type="varchar(max)" Mode="In" />
+          <Parameter Name="cbSeriesVarAll" Type="varchar" Mode="In" />
+          <Parameter Name="searchTerm" Type="varchar(max)" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetSeriesFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="seriesID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetStudyDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studyID" Type="int" Mode="In" />
+          <Parameter Name="studyType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetStudyFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetStudyQuestionnaire" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studyID" Type="int" Mode="In" />
+          <Parameter Name="studyType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspPopulateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateElementData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateFollowupDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateRespondent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateSeriesDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateStudyDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspPopulateValueData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspSearchDataBySeries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchTerm" Type="varchar" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspSearchDataByStudy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="programID" Type="int" Mode="In" />
+          <Parameter Name="searchTerm" Type="varchar" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspSearchVariableDataBySeries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="seriesID" Type="int" Mode="In" />
+          <Parameter Name="searchTerm" Type="varchar" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+          <Parameter Name="page" Type="int" Mode="In" />
+          <Parameter Name="sortColumn" Type="varchar" Mode="In" />
+          <Parameter Name="sortDirection" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspSearchVariableDataByStudy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studyID" Type="int" Mode="In" />
+          <Parameter Name="searchTerm" Type="varchar" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+          <Parameter Name="page" Type="int" Mode="In" />
+          <Parameter Name="sortColumn" Type="varchar" Mode="In" />
+          <Parameter Name="sortDirection" Type="varchar" Mode="In" />
+        </Function>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'DIG.dbo.tblFlatPack$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="tblFlatPack$">
+        <Property Name="Study ID" Type="int" />
+        <Property Name="Dataset ID" Type="uniqueidentifier" />
+        <Property Name="File ID" Type="uniqueidentifier" />
+        <Property Name="Element ID" Type="uniqueidentifier" />
+        <Property Name="Value ID" Type="uniqueidentifier" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataInventoryDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DataInventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="DataInventoryDBModel.sysdiagrams" />
+          <EntitySet Name="tblCollection" EntityType="DataInventoryDBModel.tblCollection" />
+          <EntitySet Name="tblContact" EntityType="DataInventoryDBModel.tblContact" />
+          <EntitySet Name="tblData" EntityType="DataInventoryDBModel.tblData" />
+          <EntitySet Name="tblDataset_" EntityType="DataInventoryDBModel.tblDataset_" />
+          <EntitySet Name="tblDetail" EntityType="DataInventoryDBModel.tblDetail" />
+          <EntitySet Name="tblDFLink_" EntityType="DataInventoryDBModel.tblDFLink_" />
+          <EntitySet Name="tblElement_" EntityType="DataInventoryDBModel.tblElement_" />
+          <EntitySet Name="tblElementData" EntityType="DataInventoryDBModel.tblElementData" />
+          <EntitySet Name="tblEVLink_" EntityType="DataInventoryDBModel.tblEVLink_" />
+          <EntitySet Name="tblFELink_" EntityType="DataInventoryDBModel.tblFELink_" />
+          <EntitySet Name="tblFile_" EntityType="DataInventoryDBModel.tblFile_" />
+          <EntitySet Name="tblFollow_Up" EntityType="DataInventoryDBModel.tblFollow_Up" />
+          <EntitySet Name="tblProgram" EntityType="DataInventoryDBModel.tblProgram" />
+          <EntitySet Name="tblRespondent" EntityType="DataInventoryDBModel.tblRespondent" />
+          <EntitySet Name="tblSDLink_" EntityType="DataInventoryDBModel.tblSDLink_" />
+          <EntitySet Name="tblStudy" EntityType="DataInventoryDBModel.tblStudy" />
+          <EntitySet Name="tblValue_" EntityType="DataInventoryDBModel.tblValue_" />
+          <EntitySet Name="tblValueData" EntityType="DataInventoryDBModel.tblValueData" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DataInventoryDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DataInventoryDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="uspExportFileVariable" ReturnType="Collection(DataInventoryDBModel.uspExportFileVariable_Result)">
+            <Parameter Name="fileID" Mode="In" Type="Guid" />
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspExportSeriesVariable">
+            <Parameter Name="variableList" Mode="In" Type="String" />
+            <Parameter Name="cbSeriesVarAll" Mode="In" Type="String" />
+            <Parameter Name="seriesID" Mode="In" Type="Int32" />
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspExportStudyVariable">
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+            <Parameter Name="variableList" Mode="In" Type="String" />
+            <Parameter Name="cbSeriesVarAll" Mode="In" Type="String" />
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetSeriesFile" ReturnType="Collection(DataInventoryDBModel.uspGetSeriesFile_Result)">
+            <Parameter Name="seriesID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetStudyDetail" ReturnType="Collection(DataInventoryDBModel.uspGetStudyDetail_Result)">
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+            <Parameter Name="studyType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetStudyFile" ReturnType="Collection(DataInventoryDBModel.uspGetStudyFile_Result)">
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetStudyQuestionnaire">
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+            <Parameter Name="studyType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspPopulateData" />
+          <FunctionImport Name="uspPopulateElementData" />
+          <FunctionImport Name="uspPopulateFollowupDetail" />
+          <FunctionImport Name="uspPopulateRespondent" />
+          <FunctionImport Name="uspPopulateSeriesDetail" />
+          <FunctionImport Name="uspPopulateStudyDetail" />
+          <FunctionImport Name="uspPopulateValueData" />
+          <FunctionImport Name="uspSearchDataBySeries" ReturnType="Collection(DataInventoryDBModel.uspSearchDataBySeries_Result)">
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspSearchDataByStudy">
+            <Parameter Name="programID" Mode="In" Type="Int32" />
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspSearchVariableDataBySeries">
+            <Parameter Name="seriesID" Mode="In" Type="Int32" />
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+            <Parameter Name="page" Mode="In" Type="Int32" />
+            <Parameter Name="sortColumn" Mode="In" Type="String" />
+            <Parameter Name="sortDirection" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspSearchVariableDataByStudy">
+            <Parameter Name="studyID" Mode="In" Type="Int32" />
+            <Parameter Name="searchTerm" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+            <Parameter Name="page" Mode="In" Type="Int32" />
+            <Parameter Name="sortColumn" Mode="In" Type="String" />
+            <Parameter Name="sortDirection" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblCollection">
+          <Key>
+            <PropertyRef Name="Collection_ID" />
+          </Key>
+          <Property Name="Collection_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detail_ID" Type="Int32" />
+          <Property Name="Collection_Name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Start_Date__Planned_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Start_Date__Actual_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_End_Date__Planned_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_End_Date__Actual_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="Contact_ID" />
+          </Key>
+          <Property Name="Contact_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contact_First_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Contact_Last_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Contact_Email" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Contact_Phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblData">
+          <Key>
+            <PropertyRef Name="Data_ID" />
+          </Key>
+          <Property Name="Data_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program_ID" Type="Int32" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Searchable_Data" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDataset_">
+          <Key>
+            <PropertyRef Name="Dataset_ID" />
+          </Key>
+          <Property Name="Dataset_ID" Type="Guid" Nullable="false" />
+          <Property Name="Dataset_Title" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Dataset_Location" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Dataset_Location_Detail" Type="String" MaxLength="800" Unicode="false" FixedLength="false" />
+          <Property Name="Dataset_Restriction" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblDetail">
+          <Key>
+            <PropertyRef Name="Detail_ID" />
+          </Key>
+          <Property Name="Detail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Follow_Up_ID" Type="Int32" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Steward" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Universe_Survey" Type="Boolean" />
+          <Property Name="Sample_Survey" Type="Boolean" />
+          <Property Name="Cross_Sectional" Type="Boolean" />
+          <Property Name="Longitudinal" Type="Boolean" />
+          <Property Name="Voluntary" Type="Boolean" />
+          <Property Name="Mandatory" Type="Boolean" />
+          <Property Name="Required_for_Benefits" Type="Boolean" />
+          <Property Name="Requirement_Reason" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Monitoring" Type="Boolean" />
+          <Property Name="Grantee_Reports" Type="Boolean" />
+          <Property Name="Authorizing_Law" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SORN" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Could_Be_Public" Type="Boolean" />
+          <Property Name="Publication_Date__Stats_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Publication_Type__Stats_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Publication_URL__Stats_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Publication_Date__Data_" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Publication_URL__Data_" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Restricted_Use_Date" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Planned_Restricted_Data" Type="Boolean" />
+          <Property Name="Students" Type="Int32" />
+          <Property Name="Staff" Type="Int32" />
+          <Property Name="Institutions" Type="Int32" />
+          <Property Name="Programs" Type="Int32" />
+          <Property Name="Other_Subject" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Age_0_2" Type="Int32" />
+          <Property Name="Age_3_5" Type="Int32" />
+          <Property Name="Age_6_21" Type="Int32" />
+          <Property Name="Age_Older_Than_21" Type="Int32" />
+          <Property Name="Age_NA" Type="Int32" />
+          <Property Name="Pre_K" Type="Int32" />
+          <Property Name="Elementary" Type="Int32" />
+          <Property Name="Middle" Type="Int32" />
+          <Property Name="High_School" Type="Int32" />
+          <Property Name="Postsecondary" Type="Int32" />
+          <Property Name="Graduate" Type="Int32" />
+          <Property Name="Continued_Technical_Ed" Type="Int32" />
+          <Property Name="Adult_Education" Type="Int32" />
+          <Property Name="General_Adult" Type="Int32" />
+          <Property Name="Education_Level_NA" Type="Int32" />
+          <Property Name="Other_Population" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Subject_Population_Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="School_Institution_Data" Type="Boolean" />
+          <Property Name="LEA_Data" Type="Boolean" />
+          <Property Name="State_Data" Type="Boolean" />
+          <Property Name="Region_Data" Type="Boolean" />
+          <Property Name="National_Data" Type="Boolean" />
+          <Property Name="Other_Data_Level" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Bureau_Code" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Code" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="JSON_Unique_Identifier" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SORN_URL" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Public_Access_Level" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Confidentiality_Restrictions" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDFLink_">
+          <Key>
+            <PropertyRef Name="DF_Link_ID" />
+          </Key>
+          <Property Name="DF_Link_ID" Type="Guid" Nullable="false" />
+          <Property Name="SD_Link_ID" Type="Guid" />
+          <Property Name="File_ID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tblElement_">
+          <Key>
+            <PropertyRef Name="Element_ID" />
+          </Key>
+          <Property Name="Element_ID" Type="Guid" Nullable="false" />
+          <Property Name="Element_Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Label" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Extended_Definition" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Question" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Type" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Vector" Type="Int32" />
+          <Property Name="EDFacts" Type="Int32" />
+          <Property Name="IDEA" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblElementData">
+          <Key>
+            <PropertyRef Name="Data_ID" />
+          </Key>
+          <Property Name="Data_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program_ID" Type="Int32" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Element_ID" Type="Guid" />
+          <Property Name="Element_Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Label" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Extended_Definition" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Element_Question" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Searchable_Data" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Value_Data" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Value_Count" Type="Int32" />
+          <Property Name="File_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="File_List_Export" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblEVLink_">
+          <Key>
+            <PropertyRef Name="EV_Link_ID" />
+          </Key>
+          <Property Name="EV_Link_ID" Type="Guid" Nullable="false" />
+          <Property Name="FE_Link_ID" Type="Guid" />
+          <Property Name="Value_ID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tblFELink_">
+          <Key>
+            <PropertyRef Name="FE_Link_ID" />
+          </Key>
+          <Property Name="FE_Link_ID" Type="Guid" Nullable="false" />
+          <Property Name="DF_Link_ID" Type="Guid" />
+          <Property Name="Element_ID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tblFile_">
+          <Key>
+            <PropertyRef Name="File_ID" />
+          </Key>
+          <Property Name="File_ID" Type="Guid" Nullable="false" />
+          <Property Name="File_Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="File_Format" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblFollow_Up">
+          <Key>
+            <PropertyRef Name="Follow_Up_ID" />
+          </Key>
+          <Property Name="Follow_Up_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Follow_Up_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Follow_Up_Abbreviation" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Follow_up_Abstract" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Longitudinal_Follow_Up" Type="Int32" />
+          <Property Name="Preceding_Follow_Up_ID" Type="Int32" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Subject_Terms_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Date_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblProgram">
+          <Key>
+            <PropertyRef Name="Program_ID" />
+          </Key>
+          <Property Name="Program_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Division_ID" Type="Int32" />
+          <Property Name="Program_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_2" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_1_Duration" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_2_Duration" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Abbreviation" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_1_Abbr" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Old_Name_2_Abbr" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Primary_Contact_ID" Type="Int32" />
+          <Property Name="C2nd_Contact_ID" Type="Int32" />
+          <Property Name="C3rd_Contact_ID" Type="Int32" />
+          <Property Name="Supervisor_ID" Type="Int32" />
+          <Property Name="Study_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Steward_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Search_Variables" Type="Boolean" />
+          <Property Name="Study_Count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblRespondent">
+          <Key>
+            <PropertyRef Name="Respondent_ID" />
+          </Key>
+          <Property Name="Respondent_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Collection_ID" Type="Int32" />
+          <Property Name="Respondent_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Respondent_Type_Detail" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Topics" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Expected_Sample_Size" Type="Int32" />
+          <Property Name="Actual_Sample_Size" Type="Int32" />
+          <Property Name="Response_Rate_Estimated" Type="Double" />
+          <Property Name="Response_Rate_Actual" Type="Double" />
+          <Property Name="Final_Data_Format" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Required_Response_Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Response_Requirement_Reason" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Explicit_Consent" Type="Boolean" />
+          <Property Name="Implicit_Consent" Type="Boolean" />
+          <Property Name="VC_Language_IC" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Respondent_Age_0_2" Type="Boolean" />
+          <Property Name="Respondent_Age_3_5" Type="Boolean" />
+          <Property Name="Respondent_Age_6_21" Type="Boolean" />
+          <Property Name="Respondent_Age_Older_Than_21" Type="Boolean" />
+          <Property Name="Respondent_Age_NA" Type="Boolean" />
+          <Property Name="Respondent_Pre_K" Type="Boolean" />
+          <Property Name="Respondent_Elementary" Type="Boolean" />
+          <Property Name="Respondent_Middle" Type="Boolean" />
+          <Property Name="Respondent_High_School" Type="Boolean" />
+          <Property Name="Respondent_Postsecondary" Type="Boolean" />
+          <Property Name="Respondent_Graduate" Type="Boolean" />
+          <Property Name="Respondent_Continued_Technical_Ed" Type="Boolean" />
+          <Property Name="Respondent_Adult_Education" Type="Boolean" />
+          <Property Name="Respondent_Education_Level_NA" Type="Boolean" />
+          <Property Name="Respondent_Other_Population" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Respondent_Population_Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Administrative_Records" Type="Boolean" />
+          <Property Name="Address_Update" Type="Boolean" />
+          <Property Name="List_Data" Type="Boolean" />
+          <Property Name="Recruitment" Type="Boolean" />
+          <Property Name="Coordination_Help" Type="Boolean" />
+          <Property Name="Screener" Type="Boolean" />
+          <Property Name="Assessment" Type="Boolean" />
+          <Property Name="Survey" Type="Boolean" />
+          <Property Name="Abbreviated_Survey" Type="Boolean" />
+          <Property Name="Program_Reporting" Type="Boolean" />
+          <Property Name="EDFacts" Type="Boolean" />
+          <Property Name="CPS" Type="Boolean" />
+          <Property Name="NSLDS" Type="Boolean" />
+          <Property Name="Other_Response_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Paper" Type="Int32" />
+          <Property Name="Phone__Not_CATI_" Type="Int32" />
+          <Property Name="CATI" Type="Int32" />
+          <Property Name="Web" Type="Int32" />
+          <Property Name="Email" Type="Int32" />
+          <Property Name="F2F__Not_CAPI_" Type="Int32" />
+          <Property Name="CAPI" Type="Int32" />
+          <Property Name="Spreadsheet" Type="Int32" />
+          <Property Name="PRS" Type="Int32" />
+          <Property Name="Other_Collection_Mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Mode_Detail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Other_Languages" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Interpreters" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Feasibility_Calls" Type="Boolean" />
+          <Property Name="Pretest" Type="Boolean" />
+          <Property Name="Cog_Labs" Type="Boolean" />
+          <Property Name="Focus_Groups" Type="Boolean" />
+          <Property Name="PIlot_Test" Type="Boolean" />
+          <Property Name="Field_Test" Type="Boolean" />
+          <Property Name="Program_ID" Type="Int32" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Follow_up_ID" Type="Int32" />
+          <Property Name="Authorizing_Law" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblSDLink_">
+          <Key>
+            <PropertyRef Name="SD_Link_ID" />
+          </Key>
+          <Property Name="SD_Link_ID" Type="Guid" Nullable="false" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Dataset_ID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tblStudy">
+          <Key>
+            <PropertyRef Name="Study_ID" />
+          </Key>
+          <Property Name="Study_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program_ID" Type="Int32" />
+          <Property Name="Study_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_2" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_1_Duration" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_2_Duration" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Abbreviation" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_1_Abbr" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Old_Name_2_Abbr" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Website" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Study_Abstract" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Frequency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Most_Recent_Year" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Releasable" Type="Boolean" />
+          <Property Name="Steward_List" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Geographic_Coverage_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Observation_Unit_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Population_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Data_Types_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Data_Collection_Purpose_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Authorizing_Law_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SORN_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Target_Population_Age_Range_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Target_Population_Education_Level_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Subject_Terms_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Initial_Report_List" Type="String" MaxLength="1200" Unicode="true" FixedLength="false" />
+          <Property Name="Data_Availability_List" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Restricted_Use_Date_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Could_Be_Public_List" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Collection_Date_List" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Search_Variables" Type="Boolean" />
+          <Property Name="Bureau_Code_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Program_Code_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="JSON_Unique_Identifier_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SORN_URL_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Public_Access_Level_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Confidentiality_Restrictions_List" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblValue_">
+          <Key>
+            <PropertyRef Name="Value_ID" />
+          </Key>
+          <Property Name="Value_ID" Type="Guid" Nullable="false" />
+          <Property Name="Value_Option" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Value_Label" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblValueData">
+          <Key>
+            <PropertyRef Name="Data_ID" />
+          </Key>
+          <Property Name="Data_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program_ID" Type="Int32" />
+          <Property Name="Study_ID" Type="Int32" />
+          <Property Name="Element_ID" Type="Guid" />
+          <Property Name="Value_ID" Type="Guid" />
+          <Property Name="Searchable_Data" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspExportFileVariable_Result">
+          <Property Type="String" Name="variableName" Nullable="true" />
+          <Property Type="String" Name="variableLabel" Nullable="true" />
+          <Property Type="String" Name="valueList" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspGetSeriesFile_Result">
+          <Property Type="Guid" Name="fileID" Nullable="false" />
+          <Property Type="String" Name="fileName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="datasetTitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="fileLocation" Nullable="true" MaxLength="539" />
+          <Property Type="String" Name="fileLocationDetail" Nullable="true" MaxLength="1629" />
+          <Property Type="String" Name="fileDataFormat" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="studyID" Nullable="false" />
+          <Property Type="String" Name="studyName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetStudyDetail_Result">
+          <Property Type="Int32" Name="studyID" Nullable="false" />
+          <Property Type="String" Name="studyName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="studyAlternativeTitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="studyPreviousTitle" Nullable="true" MaxLength="1026" />
+          <Property Type="String" Name="studySummary" Nullable="true" />
+          <Property Type="Int32" Name="seriesID" Nullable="false" />
+          <Property Type="String" Name="seriesName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="timePeriod" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="periodicity" Nullable="false" />
+          <Property Type="String" Name="investigator" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="persistentURL" Nullable="true" />
+          <Property Type="String" Name="geographicCoverage" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="observationUnit" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="studyPopulation" Nullable="false" />
+          <Property Type="String" Name="studyDataTypes" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="dataCollectionPurpose" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="authorizingLaw" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="sorn" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="targetPopulationAgeRange" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="targetPopulationEducationLevel" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="subjectTerms" Nullable="false" />
+          <Property Type="String" Name="initialReport" Nullable="true" MaxLength="1200" />
+          <Property Type="String" Name="dataAvailability" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="restrictedUseDate" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="collectionDate" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="searchVariables" Nullable="true" />
+          <Property Type="String" Name="bureauCode" Nullable="false" />
+          <Property Type="String" Name="programCode" Nullable="false" />
+          <Property Type="String" Name="jsonUniqueIdentifier" Nullable="false" />
+          <Property Type="String" Name="sornURL" Nullable="false" />
+          <Property Type="String" Name="publicAccessLevel" Nullable="false" />
+          <Property Type="String" Name="confidentialityRestrictions" Nullable="false" />
+          <Property Type="String" Name="contactName" Nullable="true" MaxLength="511" />
+          <Property Type="String" Name="contactEmail" Nullable="true" MaxLength="532" />
+        </ComplexType>
+        <ComplexType Name="uspGetStudyFile_Result">
+          <Property Type="Guid" Name="fileID" Nullable="false" />
+          <Property Type="String" Name="fileName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="datasetTitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="fileLocation" Nullable="true" MaxLength="539" />
+          <Property Type="String" Name="fileLocationDetail" Nullable="true" MaxLength="1629" />
+          <Property Type="String" Name="fileDataFormat" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="studyID" Nullable="false" />
+          <Property Type="String" Name="studyName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspSearchDataBySeries_Result">
+          <Property Type="Int32" Name="seriesID" Nullable="false" />
+          <Property Type="String" Name="seriesName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataInventoryDBModelStoreContainer" CdmEntityContainer="DataInventoryEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCollection">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblCollection">
+              <MappingFragment StoreEntitySet="tblCollection">
+                <ScalarProperty Name="Collection_ID" ColumnName="Collection ID" />
+                <ScalarProperty Name="Detail_ID" ColumnName="Detail ID" />
+                <ScalarProperty Name="Collection_Name" ColumnName="Collection Name" />
+                <ScalarProperty Name="Collection_Type" ColumnName="Collection Type" />
+                <ScalarProperty Name="Collection_Start_Date__Planned_" ColumnName="Collection Start Date (Planned)" />
+                <ScalarProperty Name="Collection_Start_Date__Actual_" ColumnName="Collection Start Date (Actual)" />
+                <ScalarProperty Name="Collection_End_Date__Planned_" ColumnName="Collection End Date (Planned)" />
+                <ScalarProperty Name="Collection_End_Date__Actual_" ColumnName="Collection End Date (Actual)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContact">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblContact">
+              <MappingFragment StoreEntitySet="tblContact">
+                <ScalarProperty Name="Contact_ID" ColumnName="Contact ID" />
+                <ScalarProperty Name="Contact_First_Name" ColumnName="Contact First Name" />
+                <ScalarProperty Name="Contact_Last_Name" ColumnName="Contact Last Name" />
+                <ScalarProperty Name="Contact_Email" ColumnName="Contact Email" />
+                <ScalarProperty Name="Contact_Phone" ColumnName="Contact Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblData">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblData">
+              <MappingFragment StoreEntitySet="tblData">
+                <ScalarProperty Name="Data_ID" ColumnName="Data ID" />
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Searchable_Data" ColumnName="Searchable Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDataset_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblDataset_">
+              <MappingFragment StoreEntitySet="tblDataset$">
+                <ScalarProperty Name="Dataset_ID" ColumnName="Dataset ID" />
+                <ScalarProperty Name="Dataset_Title" ColumnName="Dataset Title" />
+                <ScalarProperty Name="Dataset_Location" ColumnName="Dataset Location" />
+                <ScalarProperty Name="Dataset_Location_Detail" ColumnName="Dataset Location Detail" />
+                <ScalarProperty Name="Dataset_Restriction" ColumnName="Dataset Restriction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDetail">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblDetail">
+              <MappingFragment StoreEntitySet="tblDetail">
+                <ScalarProperty Name="Detail_ID" ColumnName="Detail ID" />
+                <ScalarProperty Name="Follow_Up_ID" ColumnName="Follow-Up ID" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Steward" ColumnName="Steward" />
+                <ScalarProperty Name="Universe_Survey" ColumnName="Universe Survey" />
+                <ScalarProperty Name="Sample_Survey" ColumnName="Sample Survey" />
+                <ScalarProperty Name="Cross_Sectional" ColumnName="Cross-Sectional" />
+                <ScalarProperty Name="Longitudinal" ColumnName="Longitudinal" />
+                <ScalarProperty Name="Voluntary" ColumnName="Voluntary" />
+                <ScalarProperty Name="Mandatory" ColumnName="Mandatory" />
+                <ScalarProperty Name="Required_for_Benefits" ColumnName="Required for Benefits" />
+                <ScalarProperty Name="Requirement_Reason" ColumnName="Requirement Reason" />
+                <ScalarProperty Name="Program_Monitoring" ColumnName="Program Monitoring" />
+                <ScalarProperty Name="Grantee_Reports" ColumnName="Grantee Reports" />
+                <ScalarProperty Name="Authorizing_Law" ColumnName="Authorizing Law" />
+                <ScalarProperty Name="SORN" ColumnName="SORN" />
+                <ScalarProperty Name="Could_Be_Public" ColumnName="Could Be Public" />
+                <ScalarProperty Name="Publication_Date__Stats_" ColumnName="Publication Date (Stats)" />
+                <ScalarProperty Name="Publication_Type__Stats_" ColumnName="Publication Type (Stats)" />
+                <ScalarProperty Name="Publication_URL__Stats_" ColumnName="Publication URL (Stats)" />
+                <ScalarProperty Name="Publication_Date__Data_" ColumnName="Publication Date (Data)" />
+                <ScalarProperty Name="Publication_URL__Data_" ColumnName="Publication URL (Data)" />
+                <ScalarProperty Name="Restricted_Use_Date" ColumnName="Restricted-Use Date" />
+                <ScalarProperty Name="Planned_Restricted_Data" ColumnName="Planned Restricted Data" />
+                <ScalarProperty Name="Students" ColumnName="Students" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+                <ScalarProperty Name="Institutions" ColumnName="Institutions" />
+                <ScalarProperty Name="Programs" ColumnName="Programs" />
+                <ScalarProperty Name="Other_Subject" ColumnName="Other Subject" />
+                <ScalarProperty Name="Age_0_2" ColumnName="Age 0-2" />
+                <ScalarProperty Name="Age_3_5" ColumnName="Age 3-5" />
+                <ScalarProperty Name="Age_6_21" ColumnName="Age 6-21" />
+                <ScalarProperty Name="Age_Older_Than_21" ColumnName="Age Older Than 21" />
+                <ScalarProperty Name="Age_NA" ColumnName="Age NA" />
+                <ScalarProperty Name="Pre_K" ColumnName="Pre-K" />
+                <ScalarProperty Name="Elementary" ColumnName="Elementary" />
+                <ScalarProperty Name="Middle" ColumnName="Middle" />
+                <ScalarProperty Name="High_School" ColumnName="High School" />
+                <ScalarProperty Name="Postsecondary" ColumnName="Postsecondary" />
+                <ScalarProperty Name="Graduate" ColumnName="Graduate" />
+                <ScalarProperty Name="Continued_Technical_Ed" ColumnName="Continued Technical Ed" />
+                <ScalarProperty Name="Adult_Education" ColumnName="Adult Education" />
+                <ScalarProperty Name="General_Adult" ColumnName="General Adult" />
+                <ScalarProperty Name="Education_Level_NA" ColumnName="Education Level NA" />
+                <ScalarProperty Name="Other_Population" ColumnName="Other Population" />
+                <ScalarProperty Name="Subject_Population_Detail" ColumnName="Subject Population Detail" />
+                <ScalarProperty Name="School_Institution_Data" ColumnName="School/Institution Data" />
+                <ScalarProperty Name="LEA_Data" ColumnName="LEA Data" />
+                <ScalarProperty Name="State_Data" ColumnName="State Data" />
+                <ScalarProperty Name="Region_Data" ColumnName="Region Data" />
+                <ScalarProperty Name="National_Data" ColumnName="National Data" />
+                <ScalarProperty Name="Other_Data_Level" ColumnName="Other Data Level" />
+                <ScalarProperty Name="Bureau_Code" ColumnName="Bureau Code" />
+                <ScalarProperty Name="Program_Code" ColumnName="Program Code" />
+                <ScalarProperty Name="JSON_Unique_Identifier" ColumnName="JSON Unique Identifier" />
+                <ScalarProperty Name="SORN_URL" ColumnName="SORN URL" />
+                <ScalarProperty Name="Public_Access_Level" ColumnName="Public Access Level" />
+                <ScalarProperty Name="Confidentiality_Restrictions" ColumnName="Confidentiality Restrictions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDFLink_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblDFLink_">
+              <MappingFragment StoreEntitySet="tblDFLink$">
+                <ScalarProperty Name="DF_Link_ID" ColumnName="DF Link ID" />
+                <ScalarProperty Name="SD_Link_ID" ColumnName="SD Link ID" />
+                <ScalarProperty Name="File_ID" ColumnName="File ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblElement_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblElement_">
+              <MappingFragment StoreEntitySet="tblElement$">
+                <ScalarProperty Name="Element_ID" ColumnName="Element ID" />
+                <ScalarProperty Name="Element_Name" ColumnName="Element Name" />
+                <ScalarProperty Name="Element_Label" ColumnName="Element Label" />
+                <ScalarProperty Name="Element_Extended_Definition" ColumnName="Element Extended Definition" />
+                <ScalarProperty Name="Element_Question" ColumnName="Element Question" />
+                <ScalarProperty Name="Element_Type" ColumnName="Element Type" />
+                <ScalarProperty Name="Vector" ColumnName="Vector" />
+                <ScalarProperty Name="EDFacts" ColumnName="EDFacts" />
+                <ScalarProperty Name="IDEA" ColumnName="IDEA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblElementData">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblElementData">
+              <MappingFragment StoreEntitySet="tblElementData">
+                <ScalarProperty Name="Data_ID" ColumnName="Data ID" />
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Element_ID" ColumnName="Element ID" />
+                <ScalarProperty Name="Element_Name" ColumnName="Element Name" />
+                <ScalarProperty Name="Element_Label" ColumnName="Element Label" />
+                <ScalarProperty Name="Element_Extended_Definition" ColumnName="Element Extended Definition" />
+                <ScalarProperty Name="Element_Question" ColumnName="Element Question" />
+                <ScalarProperty Name="Searchable_Data" ColumnName="Searchable Data" />
+                <ScalarProperty Name="Value_Data" ColumnName="Value Data" />
+                <ScalarProperty Name="Value_Count" ColumnName="Value Count" />
+                <ScalarProperty Name="File_List" ColumnName="File List" />
+                <ScalarProperty Name="File_List_Export" ColumnName="File List Export" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEVLink_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblEVLink_">
+              <MappingFragment StoreEntitySet="tblEVLink$">
+                <ScalarProperty Name="EV_Link_ID" ColumnName="EV Link ID" />
+                <ScalarProperty Name="FE_Link_ID" ColumnName="FE Link ID" />
+                <ScalarProperty Name="Value_ID" ColumnName="Value ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFELink_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblFELink_">
+              <MappingFragment StoreEntitySet="tblFELink$">
+                <ScalarProperty Name="FE_Link_ID" ColumnName="FE Link ID" />
+                <ScalarProperty Name="DF_Link_ID" ColumnName="DF Link ID" />
+                <ScalarProperty Name="Element_ID" ColumnName="Element ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFile_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblFile_">
+              <MappingFragment StoreEntitySet="tblFile$">
+                <ScalarProperty Name="File_ID" ColumnName="File ID" />
+                <ScalarProperty Name="File_Name" ColumnName="File Name" />
+                <ScalarProperty Name="File_Format" ColumnName="File Format" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFollow_Up">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblFollow_Up">
+              <MappingFragment StoreEntitySet="tblFollow-Up">
+                <ScalarProperty Name="Follow_Up_ID" ColumnName="Follow-Up ID" />
+                <ScalarProperty Name="Follow_Up_Name" ColumnName="Follow-Up Name" />
+                <ScalarProperty Name="Follow_Up_Abbreviation" ColumnName="Follow-Up Abbreviation" />
+                <ScalarProperty Name="Follow_up_Abstract" ColumnName="Follow-up Abstract" />
+                <ScalarProperty Name="Longitudinal_Follow_Up" ColumnName="Longitudinal Follow-Up" />
+                <ScalarProperty Name="Preceding_Follow_Up_ID" ColumnName="Preceding Follow-Up ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Subject_Terms_List" ColumnName="Subject Terms List" />
+                <ScalarProperty Name="Collection_Date_List" ColumnName="Collection Date List" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProgram">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblProgram">
+              <MappingFragment StoreEntitySet="tblProgram">
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Division_ID" ColumnName="Division ID" />
+                <ScalarProperty Name="Program_Name" ColumnName="Program Name" />
+                <ScalarProperty Name="Program_Old_Name_1" ColumnName="Program Old Name 1" />
+                <ScalarProperty Name="Program_Old_Name_2" ColumnName="Program Old Name 2" />
+                <ScalarProperty Name="Program_Old_Name_1_Duration" ColumnName="Program Old Name 1 Duration" />
+                <ScalarProperty Name="Program_Old_Name_2_Duration" ColumnName="Program Old Name 2 Duration" />
+                <ScalarProperty Name="Program_Abbreviation" ColumnName="Program Abbreviation" />
+                <ScalarProperty Name="Program_Old_Name_1_Abbr" ColumnName="Program Old Name 1 Abbr" />
+                <ScalarProperty Name="Program_Old_Name_2_Abbr" ColumnName="Program Old Name 2 Abbr" />
+                <ScalarProperty Name="Program_Description" ColumnName="Program Description" />
+                <ScalarProperty Name="Primary_Contact_ID" ColumnName="Primary Contact ID" />
+                <ScalarProperty Name="C2nd_Contact_ID" ColumnName="2nd Contact ID" />
+                <ScalarProperty Name="C3rd_Contact_ID" ColumnName="3rd Contact ID" />
+                <ScalarProperty Name="Supervisor_ID" ColumnName="Supervisor ID" />
+                <ScalarProperty Name="Study_List" ColumnName="Study List" />
+                <ScalarProperty Name="Steward_List" ColumnName="Steward List" />
+                <ScalarProperty Name="Search_Variables" ColumnName="Search Variables" />
+                <ScalarProperty Name="Study_Count" ColumnName="Study Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRespondent">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblRespondent">
+              <MappingFragment StoreEntitySet="tblRespondent">
+                <ScalarProperty Name="Respondent_ID" ColumnName="Respondent ID" />
+                <ScalarProperty Name="Collection_ID" ColumnName="Collection ID" />
+                <ScalarProperty Name="Respondent_Type" ColumnName="Respondent Type" />
+                <ScalarProperty Name="Respondent_Type_Detail" ColumnName="Respondent Type Detail" />
+                <ScalarProperty Name="Topics" ColumnName="Topics" />
+                <ScalarProperty Name="Expected_Sample_Size" ColumnName="Expected Sample Size" />
+                <ScalarProperty Name="Actual_Sample_Size" ColumnName="Actual Sample Size" />
+                <ScalarProperty Name="Response_Rate_Estimated" ColumnName="Response Rate Estimated" />
+                <ScalarProperty Name="Response_Rate_Actual" ColumnName="Response Rate Actual" />
+                <ScalarProperty Name="Final_Data_Format" ColumnName="Final Data Format" />
+                <ScalarProperty Name="Required_Response_Detail" ColumnName="Required Response Detail" />
+                <ScalarProperty Name="Response_Requirement_Reason" ColumnName="Response Requirement Reason" />
+                <ScalarProperty Name="Explicit_Consent" ColumnName="Explicit Consent" />
+                <ScalarProperty Name="Implicit_Consent" ColumnName="Implicit Consent" />
+                <ScalarProperty Name="VC_Language_IC" ColumnName="VC Language IC" />
+                <ScalarProperty Name="Respondent_Age_0_2" ColumnName="Respondent Age 0-2" />
+                <ScalarProperty Name="Respondent_Age_3_5" ColumnName="Respondent Age 3-5" />
+                <ScalarProperty Name="Respondent_Age_6_21" ColumnName="Respondent Age 6-21" />
+                <ScalarProperty Name="Respondent_Age_Older_Than_21" ColumnName="Respondent Age Older Than 21" />
+                <ScalarProperty Name="Respondent_Age_NA" ColumnName="Respondent Age NA" />
+                <ScalarProperty Name="Respondent_Pre_K" ColumnName="Respondent Pre-K" />
+                <ScalarProperty Name="Respondent_Elementary" ColumnName="Respondent Elementary" />
+                <ScalarProperty Name="Respondent_Middle" ColumnName="Respondent Middle" />
+                <ScalarProperty Name="Respondent_High_School" ColumnName="Respondent High School" />
+                <ScalarProperty Name="Respondent_Postsecondary" ColumnName="Respondent Postsecondary" />
+                <ScalarProperty Name="Respondent_Graduate" ColumnName="Respondent Graduate" />
+                <ScalarProperty Name="Respondent_Continued_Technical_Ed" ColumnName="Respondent Continued Technical Ed" />
+                <ScalarProperty Name="Respondent_Adult_Education" ColumnName="Respondent Adult Education" />
+                <ScalarProperty Name="Respondent_Education_Level_NA" ColumnName="Respondent Education Level NA" />
+                <ScalarProperty Name="Respondent_Other_Population" ColumnName="Respondent Other Population" />
+                <ScalarProperty Name="Respondent_Population_Detail" ColumnName="Respondent Population Detail" />
+                <ScalarProperty Name="Administrative_Records" ColumnName="Administrative Records" />
+                <ScalarProperty Name="Address_Update" ColumnName="Address Update" />
+                <ScalarProperty Name="List_Data" ColumnName="List Data" />
+                <ScalarProperty Name="Recruitment" ColumnName="Recruitment" />
+                <ScalarProperty Name="Coordination_Help" ColumnName="Coordination Help" />
+                <ScalarProperty Name="Screener" ColumnName="Screener" />
+                <ScalarProperty Name="Assessment" ColumnName="Assessment" />
+                <ScalarProperty Name="Survey" ColumnName="Survey" />
+                <ScalarProperty Name="Abbreviated_Survey" ColumnName="Abbreviated Survey" />
+                <ScalarProperty Name="Program_Reporting" ColumnName="Program Reporting" />
+                <ScalarProperty Name="EDFacts" ColumnName="EDFacts" />
+                <ScalarProperty Name="CPS" ColumnName="CPS" />
+                <ScalarProperty Name="NSLDS" ColumnName="NSLDS" />
+                <ScalarProperty Name="Other_Response_Type" ColumnName="Other Response Type" />
+                <ScalarProperty Name="Paper" ColumnName="Paper" />
+                <ScalarProperty Name="Phone__Not_CATI_" ColumnName="Phone (Not CATI)" />
+                <ScalarProperty Name="CATI" ColumnName="CATI" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="F2F__Not_CAPI_" ColumnName="F2F (Not CAPI)" />
+                <ScalarProperty Name="CAPI" ColumnName="CAPI" />
+                <ScalarProperty Name="Spreadsheet" ColumnName="Spreadsheet" />
+                <ScalarProperty Name="PRS" ColumnName="PRS" />
+                <ScalarProperty Name="Other_Collection_Mode" ColumnName="Other Collection Mode" />
+                <ScalarProperty Name="Collection_Mode_Detail" ColumnName="Collection Mode Detail" />
+                <ScalarProperty Name="Other_Languages" ColumnName="Other Languages" />
+                <ScalarProperty Name="Interpreters" ColumnName="Interpreters" />
+                <ScalarProperty Name="Feasibility_Calls" ColumnName="Feasibility Calls" />
+                <ScalarProperty Name="Pretest" ColumnName="Pretest" />
+                <ScalarProperty Name="Cog_Labs" ColumnName="Cog Labs" />
+                <ScalarProperty Name="Focus_Groups" ColumnName="Focus Groups" />
+                <ScalarProperty Name="PIlot_Test" ColumnName="PIlot Test" />
+                <ScalarProperty Name="Field_Test" ColumnName="Field Test" />
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Follow_up_ID" ColumnName="Follow-up ID" />
+                <ScalarProperty Name="Authorizing_Law" ColumnName="Authorizing Law" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSDLink_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblSDLink_">
+              <MappingFragment StoreEntitySet="tblSDLink$">
+                <ScalarProperty Name="SD_Link_ID" ColumnName="SD Link ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Dataset_ID" ColumnName="Dataset ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudy">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblStudy">
+              <MappingFragment StoreEntitySet="tblStudy">
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Study_Name" ColumnName="Study Name" />
+                <ScalarProperty Name="Study_Old_Name_1" ColumnName="Study Old Name 1" />
+                <ScalarProperty Name="Study_Old_Name_2" ColumnName="Study Old Name 2" />
+                <ScalarProperty Name="Study_Old_Name_1_Duration" ColumnName="Study Old Name 1 Duration" />
+                <ScalarProperty Name="Study_Old_Name_2_Duration" ColumnName="Study Old Name 2 Duration" />
+                <ScalarProperty Name="Study_Abbreviation" ColumnName="Study Abbreviation" />
+                <ScalarProperty Name="Study_Old_Name_1_Abbr" ColumnName="Study Old Name 1 Abbr" />
+                <ScalarProperty Name="Study_Old_Name_2_Abbr" ColumnName="Study Old Name 2 Abbr" />
+                <ScalarProperty Name="Study_Website" ColumnName="Study Website" />
+                <ScalarProperty Name="Study_Abstract" ColumnName="Study Abstract" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Most_Recent_Year" ColumnName="Most Recent Year" />
+                <ScalarProperty Name="Releasable" ColumnName="Releasable" />
+                <ScalarProperty Name="Steward_List" ColumnName="Steward List" />
+                <ScalarProperty Name="Geographic_Coverage_List" ColumnName="Geographic Coverage List" />
+                <ScalarProperty Name="Observation_Unit_List" ColumnName="Observation Unit List" />
+                <ScalarProperty Name="Population_List" ColumnName="Population List" />
+                <ScalarProperty Name="Data_Types_List" ColumnName="Data Types List" />
+                <ScalarProperty Name="Data_Collection_Purpose_List" ColumnName="Data Collection Purpose List" />
+                <ScalarProperty Name="Authorizing_Law_List" ColumnName="Authorizing Law List" />
+                <ScalarProperty Name="SORN_List" ColumnName="SORN List" />
+                <ScalarProperty Name="Target_Population_Age_Range_List" ColumnName="Target Population Age Range List" />
+                <ScalarProperty Name="Target_Population_Education_Level_List" ColumnName="Target Population Education Level List" />
+                <ScalarProperty Name="Subject_Terms_List" ColumnName="Subject Terms List" />
+                <ScalarProperty Name="Initial_Report_List" ColumnName="Initial Report List" />
+                <ScalarProperty Name="Data_Availability_List" ColumnName="Data Availability List" />
+                <ScalarProperty Name="Restricted_Use_Date_List" ColumnName="Restricted Use Date List" />
+                <ScalarProperty Name="Could_Be_Public_List" ColumnName="Could Be Public List" />
+                <ScalarProperty Name="Collection_Date_List" ColumnName="Collection Date List" />
+                <ScalarProperty Name="Search_Variables" ColumnName="Search Variables" />
+                <ScalarProperty Name="Bureau_Code_List" ColumnName="Bureau Code List" />
+                <ScalarProperty Name="Program_Code_List" ColumnName="Program Code List" />
+                <ScalarProperty Name="JSON_Unique_Identifier_List" ColumnName="JSON Unique Identifier List" />
+                <ScalarProperty Name="SORN_URL_List" ColumnName="SORN URL List" />
+                <ScalarProperty Name="Public_Access_Level_List" ColumnName="Public Access Level List" />
+                <ScalarProperty Name="Confidentiality_Restrictions_List" ColumnName="Confidentiality Restrictions List" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblValue_">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblValue_">
+              <MappingFragment StoreEntitySet="tblValue$">
+                <ScalarProperty Name="Value_ID" ColumnName="Value ID" />
+                <ScalarProperty Name="Value_Option" ColumnName="Value Option" />
+                <ScalarProperty Name="Value_Label" ColumnName="Value Label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblValueData">
+            <EntityTypeMapping TypeName="DataInventoryDBModel.tblValueData">
+              <MappingFragment StoreEntitySet="tblValueData">
+                <ScalarProperty Name="Data_ID" ColumnName="Data ID" />
+                <ScalarProperty Name="Program_ID" ColumnName="Program ID" />
+                <ScalarProperty Name="Study_ID" ColumnName="Study ID" />
+                <ScalarProperty Name="Element_ID" ColumnName="Element ID" />
+                <ScalarProperty Name="Value_ID" ColumnName="Value ID" />
+                <ScalarProperty Name="Searchable_Data" ColumnName="Searchable Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DataInventoryDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DataInventoryDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DataInventoryDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DataInventoryDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DataInventoryDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DataInventoryDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DataInventoryDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="uspExportFileVariable" FunctionName="DataInventoryDBModel.Store.uspExportFileVariable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.uspExportFileVariable_Result">
+                <ScalarProperty Name="variableName" ColumnName="variableName" />
+                <ScalarProperty Name="variableLabel" ColumnName="variableLabel" />
+                <ScalarProperty Name="valueList" ColumnName="valueList" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspExportSeriesVariable" FunctionName="DataInventoryDBModel.Store.uspExportSeriesVariable" />
+          <FunctionImportMapping FunctionImportName="uspExportStudyVariable" FunctionName="DataInventoryDBModel.Store.uspExportStudyVariable" />
+          <FunctionImportMapping FunctionImportName="uspGetSeriesFile" FunctionName="DataInventoryDBModel.Store.uspGetSeriesFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.uspGetSeriesFile_Result">
+                <ScalarProperty Name="fileID" ColumnName="fileID" />
+                <ScalarProperty Name="fileName" ColumnName="fileName" />
+                <ScalarProperty Name="datasetTitle" ColumnName="datasetTitle" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="fileLocationDetail" ColumnName="fileLocationDetail" />
+                <ScalarProperty Name="fileDataFormat" ColumnName="fileDataFormat" />
+                <ScalarProperty Name="studyID" ColumnName="studyID" />
+                <ScalarProperty Name="studyName" ColumnName="studyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetStudyDetail" FunctionName="DataInventoryDBModel.Store.uspGetStudyDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.uspGetStudyDetail_Result">
+                <ScalarProperty Name="studyID" ColumnName="studyID" />
+                <ScalarProperty Name="studyName" ColumnName="studyName" />
+                <ScalarProperty Name="studyAlternativeTitle" ColumnName="studyAlternativeTitle" />
+                <ScalarProperty Name="studyPreviousTitle" ColumnName="studyPreviousTitle" />
+                <ScalarProperty Name="studySummary" ColumnName="studySummary" />
+                <ScalarProperty Name="seriesID" ColumnName="seriesID" />
+                <ScalarProperty Name="seriesName" ColumnName="seriesName" />
+                <ScalarProperty Name="timePeriod" ColumnName="timePeriod" />
+                <ScalarProperty Name="periodicity" ColumnName="periodicity" />
+                <ScalarProperty Name="investigator" ColumnName="investigator" />
+                <ScalarProperty Name="persistentURL" ColumnName="persistentURL" />
+                <ScalarProperty Name="geographicCoverage" ColumnName="geographicCoverage" />
+                <ScalarProperty Name="observationUnit" ColumnName="observationUnit" />
+                <ScalarProperty Name="studyPopulation" ColumnName="studyPopulation" />
+                <ScalarProperty Name="studyDataTypes" ColumnName="studyDataTypes" />
+                <ScalarProperty Name="dataCollectionPurpose" ColumnName="dataCollectionPurpose" />
+                <ScalarProperty Name="authorizingLaw" ColumnName="authorizingLaw" />
+                <ScalarProperty Name="sorn" ColumnName="sorn" />
+                <ScalarProperty Name="targetPopulationAgeRange" ColumnName="targetPopulationAgeRange" />
+                <ScalarProperty Name="targetPopulationEducationLevel" ColumnName="targetPopulationEducationLevel" />
+                <ScalarProperty Name="subjectTerms" ColumnName="subjectTerms" />
+                <ScalarProperty Name="initialReport" ColumnName="initialReport" />
+                <ScalarProperty Name="dataAvailability" ColumnName="dataAvailability" />
+                <ScalarProperty Name="restrictedUseDate" ColumnName="restrictedUseDate" />
+                <ScalarProperty Name="collectionDate" ColumnName="collectionDate" />
+                <ScalarProperty Name="searchVariables" ColumnName="searchVariables" />
+                <ScalarProperty Name="bureauCode" ColumnName="bureauCode" />
+                <ScalarProperty Name="programCode" ColumnName="programCode" />
+                <ScalarProperty Name="jsonUniqueIdentifier" ColumnName="jsonUniqueIdentifier" />
+                <ScalarProperty Name="sornURL" ColumnName="sornURL" />
+                <ScalarProperty Name="publicAccessLevel" ColumnName="publicAccessLevel" />
+                <ScalarProperty Name="confidentialityRestrictions" ColumnName="confidentialityRestrictions" />
+                <ScalarProperty Name="contactName" ColumnName="contactName" />
+                <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetStudyFile" FunctionName="DataInventoryDBModel.Store.uspGetStudyFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.uspGetStudyFile_Result">
+                <ScalarProperty Name="fileID" ColumnName="fileID" />
+                <ScalarProperty Name="fileName" ColumnName="fileName" />
+                <ScalarProperty Name="datasetTitle" ColumnName="datasetTitle" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="fileLocationDetail" ColumnName="fileLocationDetail" />
+                <ScalarProperty Name="fileDataFormat" ColumnName="fileDataFormat" />
+                <ScalarProperty Name="studyID" ColumnName="studyID" />
+                <ScalarProperty Name="studyName" ColumnName="studyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetStudyQuestionnaire" FunctionName="DataInventoryDBModel.Store.uspGetStudyQuestionnaire" />
+          <FunctionImportMapping FunctionImportName="uspPopulateData" FunctionName="DataInventoryDBModel.Store.uspPopulateData" />
+          <FunctionImportMapping FunctionImportName="uspPopulateElementData" FunctionName="DataInventoryDBModel.Store.uspPopulateElementData" />
+          <FunctionImportMapping FunctionImportName="uspPopulateFollowupDetail" FunctionName="DataInventoryDBModel.Store.uspPopulateFollowupDetail" />
+          <FunctionImportMapping FunctionImportName="uspPopulateRespondent" FunctionName="DataInventoryDBModel.Store.uspPopulateRespondent" />
+          <FunctionImportMapping FunctionImportName="uspPopulateSeriesDetail" FunctionName="DataInventoryDBModel.Store.uspPopulateSeriesDetail" />
+          <FunctionImportMapping FunctionImportName="uspPopulateStudyDetail" FunctionName="DataInventoryDBModel.Store.uspPopulateStudyDetail" />
+          <FunctionImportMapping FunctionImportName="uspPopulateValueData" FunctionName="DataInventoryDBModel.Store.uspPopulateValueData" />
+          <FunctionImportMapping FunctionImportName="uspSearchDataBySeries" FunctionName="DataInventoryDBModel.Store.uspSearchDataBySeries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataInventoryDBModel.uspSearchDataBySeries_Result">
+                <ScalarProperty Name="seriesID" ColumnName="seriesID" />
+                <ScalarProperty Name="seriesName" ColumnName="seriesName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspSearchDataByStudy" FunctionName="DataInventoryDBModel.Store.uspSearchDataByStudy" />
+          <FunctionImportMapping FunctionImportName="uspSearchVariableDataBySeries" FunctionName="DataInventoryDBModel.Store.uspSearchVariableDataBySeries" />
+          <FunctionImportMapping FunctionImportName="uspSearchVariableDataByStudy" FunctionName="DataInventoryDBModel.Store.uspSearchVariableDataByStudy" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

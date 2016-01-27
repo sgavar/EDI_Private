@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_DetailLayout.cshtml";    
+}
+
+<div id="ajaxDetailWait"></div>
+<div style="margin-bottom: 10px; display:none;" id="back_div"><a href="@ViewBag.searchURL" id="aBack" title="Go back to search results" class="btnBackToSearchResults">BACK TO SEARCH RESULTS</a></div>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabSeries">SERIES</a></li>
+        <li><a href="#tabStudy">STUDY</a></li>
+        <!-- new tabs -->
+
+
+
+        <!-- new tab ends-->
+
+    </ul>
+    <div id="tabSeries">    
+        <div id="divSeriesDetail">
+            @{Html.RenderAction("GetSeriesDetail", "SeriesDetail", new { seriesID = ViewBag.seriesID, studyID = ViewBag.studyID });}
+        </div>             
+    </div>                  
+    <div id="tabStudy">        
+        <div id="divStudyDetail">
+            @{Html.RenderAction("GetStudyDetail", "StudyDetail", new { seriesID = ViewBag.seriesID, studyID = ViewBag.studyID, studyType = ViewBag.studyType });}
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "~/Views/Shared/private/_ActivityLayout.cshtml";
+}
+
+@model List<DataInventory.Private.Models.ActivityViewModel>
+
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblActivity">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdActivityID" />@item.Name</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        <tr>
+            <td class="bold" style="width: 160px;">Parent Id:</td>
+            <td>@item.Parent.Id</td>
+        </tr>
+        <tr>
+            <td class="bold">Parent Name:</td>
+            <td>@item.Parent.Name</td>
+        </tr>
+        <tr>
+            <td class="bold">Activity Type:</td>
+            <td>@item.ActivityType</td>
+        </tr>
+        <tr>
+            <td class="bold">Cost:</td>
+            <td>@item.Cost</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Cost Years:</td>
+            <td>@item.CostYears</td>
+        </tr>
+        <tr>
+            <td class="bold">Cost Description:</td>
+            <td>@item.CostDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Recruitment Start Date Estimated:</td>
+            <td>@item.RecruitmentStartDateEstimated</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Start Date Estimated:</td>
+            <td>@item.CollectionStartDateEstimated</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection Start Date:</td>
+            <td>@item.CollectionStartDate</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Collection End Date Estimated:</td>
+            <td>@item.CollectionStartDateEstimated</td>
+        </tr>
+        <tr>
+            <td class="bold">Collection End Date:</td>
+            <td>@item.CollectionEndDate</td>
+        </tr>
+        <tr>
+            <td class="bold">Date Description:</td>
+            <td>@item.DateDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">DataCollection Agent Type:</td>
+            <td>@item.DataCollectionAgentType</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Collection Agent Primary:</td>
+            <td>@item.DataCollectionAgentPrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">Data Collection Agent Non Primary:</td>
+            <td>@item.DataCollectionAgentNonPrimary</td>
+        </tr>
+        <tr>
+            <td class="bold">Confidentiality Law:</td>
+            <td>@item.ConfidentialityLaw</td>
+        </tr>
+        <tr>
+            <td class="bold">Voluntary Confidential Statement:</td>
+            <td>@item.VoluntaryConfidentialStatement</td>
+        </tr>
+
+        <tr>
+            <td class="bold">Voluntary Confidential Statement Respondent:</td>
+            <td>@item.VoluntaryConfidentialStatementRespondent</td>
+        </tr>
+        <tr>
+            <td class="bold">Experiment Description:</td>
+            <td>@item.ExperimentDescription</td>
+        </tr>
+        <tr>
+            <td class="bold">Experiment Results:</td>
+            <td>@item.ExperimentResults</td>
+        </tr>
+        <tr>
+            <td class="bold">All Respondents:</td>
+            <td>
+                <ul>
+                    @foreach (var res in @item.Respondents)
+                    {
+                        <li>@res.Id : @res.Description</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="bold">All Packages:</td>
+            <td>
+                <ul>
+                    @foreach (var pac in @item.Packages)
+                    {
+                        <li>@pac.Id : @pac.ReferenceNumber</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+
+    </table>
+
+} 

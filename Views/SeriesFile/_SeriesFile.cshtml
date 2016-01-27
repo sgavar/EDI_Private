@@ -1,0 +1,46 @@
+﻿@model List<SeriesFileViewModel>
+
+@foreach (var item in Model)
+{ 
+    if (@item.fileList.Count() > 0) 
+    {
+    <div style="margin-bottom: 8px;" class="inline-block">
+        <div style="margin-right: 10px; width: auto;" class="message"><span class="ui-icon ui-icon-arrowthickstop-1-s dkgrey enlargeIcon" style="float: left; vertical-align: text-bottom;"></span> Click this icon below to export information on all variables within the file.</div>
+        <div>@item.fileList.Count() @if (@item.fileList.Count() == 1) { <text>file</text> } else { <text>files</text> }</div>
+    </div>
+    
+    <div id="containerSearchResults">
+        <table id="tblSeriesFile" style="border-collapse: separate; border-spacing: 1px;" class="tablesorter sortableTable">
+            <thead>
+                <tr style="background-color: #e4f1fb;">
+                    <th class="bold"><a href="javascript:void(0)">File Name</a></th>
+                    <th class="bold"><a href="javascript:void(0)">Dataset Title</a></th>
+                    <th class="bold"><a href="javascript:void(0)">File Location</a></th>
+                    <th class="bold"><a href="javascript:void(0)">File Location Detail</a></th>
+                    <th class="bold"><a href="javascript:void(0)">Original Data File Format</a></th>
+                    <th class="bold"><a href="javascript:void(0)">Study Name</a></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var file in item.fileList)
+            {
+                <tr style="vertical-align:text-top; background-color: #EDECE1">
+                    <td>
+                        <a href="@Url.Action("Export", new {fileID = @file.fileID, fileName = @file.fileName, studyID = @file.studyID, studyName = @file.studyName})" id="s_@file.fileName" class="btnExportFileVar"><span class="ui-icon ui-icon-arrowthickstop-1-s icon enlargeIcon"></span>@file.fileName</a>
+                    </td>
+                    <td>@file.datasetTitle</td>
+                    <td>@Html.Raw(@file.fileLocation)</td>
+                    <td>@Html.Raw(@file.fileLocationDetail)</td>
+                    <td>@file.fileDataFormat</td>
+                    <td><a href="javascript:void(0)" id="@file.studyID" class="aSeriesFileStudy">@file.studyName</a></td>                                         
+                </tr>                 
+            }
+           </tbody>   
+        </table>
+    </div>
+    }
+    else {
+        <div class="message">The inclusion of these files is in progress</div>
+    }
+    
+}

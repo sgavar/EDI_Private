@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<link href="css/diMain.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.easing.min.js" type="text/javascript"></script>
+	<script src="js/jquery-1.10.0.min.js" type="text/javascript"></script>
+	<script src="js/slides.min.jquery.js" type="text/javascript"></script>
+    
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationStart on slide: ', current);
+					};
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationComplete on slide: ', current);
+					};
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<div class="diWrap">
+	<div class="diBanner">
+    	<h1 title="ED Data Inventory">&nbsp;</h1>
+       
+       <div class="diMenu"><div class="diSearch">
+       	<a href="#" style="float: left;">Advanced Search</a> <input type="text" /> <input class="diBtn" value="" type="button" />
+       </div>
+       	<ul>
+        	<li><a href="#">Home</a></li>
+            <li><a href="#">About the Inventory</a></li>
+            <li><a href="#">Background</a></li>
+            <li class="diItemLast"><a href="#">How to Search</a></li>
+            </ul>
+         </div>
+        </div>
+	<div class="diHPTwo">
+    	 <div id="container">
+		<div id="example">
+			
+			<div id="slides">
+				<div class="slides_container">
+				<div class="slide"><a href="http://nces.ed.gov/ecls/" target="_blank"><img src="images/ecls.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">Early Childhood Longitudinal Study</span><br />
+</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/mgls17/" target="_blank"><img src="images/mgls17.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">Middle Grade Longitudinal Study 2017</span><br />
+</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/nls72/" target="_blank"><img src="images/nls72.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">National Longitudinal Study of 1972</span><br />
+
+The National Longitudinal Study of the High School Class of 1972 (NLS-72) was the first secondary longitudinal study conducted by NCES. NLS-72 collected data from 1972 high school seniors until 1986. </p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/hsb/" target="_blank"><img src="images/hs&b.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">High School and Beyond</span><br />
+
+The second longitudinal study in the program was the High School and Beyond (HS&B) study, a dual-cohort study which surveyed the sophomore and senior classes of 1980.</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/nels88/" target="_blank"><img src="images/nels88.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">National Education Longitudinal Study of 1988</span><br />
+The National Education Longitudinal Study of 1988 (NELS:88) began with a cohort of 8th-graders, following them until 2000, and collecting data on secondary and post-secondary experiences. Learn more about NELS:88</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/els2002/" target="_blank"><img src="images/els2002.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">Educational Longitudinal Study of 2002</span><br />
+
+The Education Longitudinal Study of 2002 (ELS:2002), currently collecting data on students’ postsecondary outcomes, began with sophomores in 2002 and added a senior cohort in 2004.</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/hsls09/" target="_blank"><img src="images/hsls09.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">High School Longitudinal Study of 2009</span><br />
+
+The most recent cohort in the program, the High School Longitudinal Study of 2009 (HSLS:09), has a STEM focus. HSLS:09 is currently collecting data on students’ secondary experiences. </p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/bps/" target="_blank"><img src="images/bps.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">Beginning Postsecondary Students Study</span><br />
+The National Education Longitudinal Study of 1988 (NELS:88) began with a cohort of 8th-graders, following them until 2000, and collecting data on secondary and post-secondary experiences. Learn more about NELS:88</p>
+						</div></a>
+					</div>
+                    
+                    <div class="slide"><a href="http://nces.ed.gov/surveys/b&b/" target="_blank"><img src="images/b&b.jpg" width="450" height="250" alt="National Education Longitudinal Study of 1988 kids viewing a laptop" />
+	<div class="caption" style="bottom:0">
+							<p class="mainTtl"><span class="studyName">Baccalaureate and Beyond</span><br />
+The National Education Longitudinal Study of 1988 (NELS:88) began with a cohort of 8th-graders, following them until 2000, and collecting data on secondary and post-secondary experiences. Learn more about NELS:88</p>
+						</div></a>
+					</div>
+                   
+                    
+					
+				</div>
+				<a href="#" class="prev"><img src="images/arrow-prev.png" width="24" height="43" alt="Arrow Prev" /></a>
+				<a href="#" class="next"><img src="images/arrow-next.png" width="24" height="43" alt="Arrow Next" /></a>
+			</div>
+			<img src="images/example-frame.png" alt="Example Frame" id="frame" />
+		</div>
+		    
+		
+        <div class="roundedBox">
+        	<p class="newsTtl"><img src="images/news_icon.png" alt="antennae" style="vertical-align: middle; float: left; margin-right: 10px;" />What's New</p>
+           <p style="padding-top: 10px; margin-top: 30px\9;"><a href="#">Title of Newsworthy Content</a><br />
+<em>September 10, 2013</em><br />
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam...</p>
+
+<p><a href="#">Title of Newsworthy Content</a><br />
+<em>September 10, 2013</em><br />
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam...</p>
+
+<p><a href="#">Title of Newsworthy Content</a><br />
+<em>September 10, 2013</em><br />
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam...</p>
+        
+        </div>
+		   
+         
+     
+	</div>
+    </div>
+    <div class="diHPOne">
+    	
+        <div class="welBox">
+        <span class="welOne">Welcome to the<br /><span style="text-transform: uppercase;">Department of Education’s</span></span><br />
+<span class="welTwo">ED Data Inventory</span>
+<p>We hope that you will find the information included in the inventory useful in your search for data about education.</p>
+        </div>
+        <div class="roundedBox">
+        <div class="wwwText">
+        <strong>WHAT:</strong> The ED Data Inventory includes data reported to the Department of Education as part of grant activities, along with administrative and statistical data assembled and maintained by the Department. The ED Data Inventory includes descriptive data about each data collection along with information on the specific data elements in each collection.
+
+<p><strong>WHEN:</strong> In September 2010, the Department of Education formed a Data Strategy Team to improve the coordination of data collections across program offices. The Data Strategy Team recognized the value of an inventory of the department’s data collections as a logical step to coordinate efforts. A working group was established for the inventory, and all program offices were invited to name a representative to the working group. That group now has about 20 core members. The Working Group started by identifying relevant information fields and decided to draw upon a subset of the information included in the Information Collection Request packages that are prepared for clearance by the Office of Management and Budget (OMB).</p>
+
+<p><strong>WHY:</strong> In March 2013, the President issued an Executive Order that was accompanied by an OMB Directive instructing each Federal Department to provide an inventory of...</p>
+        </div></div>
+		</div>
+       
+</div>
+</body>
+</html>
