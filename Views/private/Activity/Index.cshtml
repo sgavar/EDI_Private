@@ -13,112 +13,176 @@
         <tr>
             <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
         </tr>
-        <tr>
-            <td class="bold" style="width: 160px;">Parent Id:</td>
-            <td>@item.Parent.Id</td>
-        </tr>
-        <tr>
-            <td class="bold">Parent Name:</td>
-            <td>@item.Parent.Name</td>
-        </tr>
-        <tr>
-            <td class="bold">Activity Type:</td>
-            <td>@item.ActivityType</td>
-        </tr>
-        <tr>
-            <td class="bold">Cost:</td>
-            <td>@item.Cost</td>
-        </tr>
 
-        <tr>
-            <td class="bold">Cost Years:</td>
-            <td>@item.CostYears</td>
-        </tr>
-        <tr>
-            <td class="bold">Cost Description:</td>
-            <td>@item.CostDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Recruitment Start Date Estimated:</td>
-            <td>@item.RecruitmentStartDateEstimated</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Start Date Estimated:</td>
-            <td>@item.CollectionStartDateEstimated</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Start Date:</td>
-            <td>@item.CollectionStartDate</td>
-        </tr>
-
-        <tr>
-            <td class="bold">Collection End Date Estimated:</td>
-            <td>@item.CollectionStartDateEstimated</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection End Date:</td>
-            <td>@item.CollectionEndDate</td>
-        </tr>
-        <tr>
-            <td class="bold">Date Description:</td>
-            <td>@item.DateDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">DataCollection Agent Type:</td>
-            <td>@item.DataCollectionAgentType</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Collection Agent Primary:</td>
-            <td>@item.DataCollectionAgentPrimary</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Collection Agent Non Primary:</td>
-            <td>@item.DataCollectionAgentNonPrimary</td>
-        </tr>
-        <tr>
-            <td class="bold">Confidentiality Law:</td>
-            <td>@item.ConfidentialityLaw</td>
-        </tr>
-        <tr>
-            <td class="bold">Voluntary Confidential Statement:</td>
-            <td>@item.VoluntaryConfidentialStatement</td>
-        </tr>
-
-        <tr>
-            <td class="bold">Voluntary Confidential Statement Respondent:</td>
-            <td>@item.VoluntaryConfidentialStatementRespondent</td>
-        </tr>
-        <tr>
-            <td class="bold">Experiment Description:</td>
-            <td>@item.ExperimentDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Experiment Results:</td>
-            <td>@item.ExperimentResults</td>
-        </tr>
-        <tr>
-            <td class="bold">All Respondents:</td>
-            <td>
-                <ul>
-                    @foreach (var res in @item.Respondents)
-                    {
-                        <li>@res.Id : @res.Description</li>
-                    }
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td class="bold">All Packages:</td>
-            <td>
-                <ul>
-                    @foreach (var pac in @item.Packages)
-                    {
-                        <li>@pac.Id : @pac.ReferenceNumber</li>
-                    }
-                </ul>
-            </td>
-        </tr>
-
+        @if (item.Parent.Id != 0 && !String.IsNullOrWhiteSpace(item.Parent.Name))
+        {
+            <tr>
+                <td class="bold" style="width: 160px;">Parent:</td>
+                <td><a href="@Url.Action("GetCollectionDetail","Collection", new {Id = item.Parent.Id })">@item.Parent.Name</a></td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ActivityType))
+        {
+            <tr>
+                <td class="bold">Activity Type:</td>
+                <td>@item.ActivityType</td>
+            </tr>
+        }
+        @if (item.Cost.HasValue)
+        {
+            <tr>
+                <td class="bold">Cost:</td>
+                <td>@item.Cost.Value</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.CostYears))
+        {
+            <tr>
+                <td class="bold">Cost Years:</td>
+                <td>@item.CostYears</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.CostDescription))
+        {
+            <tr>
+                <td class="bold">Cost Description:</td>
+                <td>@item.CostDescription</td>
+            </tr>
+        }
+        @if (item.RecruitmentStartDateEstimated.HasValue)
+        {
+            <tr>
+                <td class="bold">Recruitment Start Date Estimated:</td>
+                <td>@item.RecruitmentStartDateEstimated.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.CollectionStartDateEstimated.HasValue)
+        {
+            <tr>
+                <td class="bold">Collection Start Date Estimated:</td>
+                <td>@item.CollectionStartDateEstimated.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.CollectionStartDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Collection Start Date:</td>
+                <td>@item.CollectionStartDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.CollectionEndDateEstimated.HasValue)
+        {
+            <tr>
+                <td class="bold">Collection End Date Estimated:</td>
+                <td>@item.CollectionStartDateEstimated.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.CollectionEndDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Collection End Date:</td>
+                <td>@item.CollectionEndDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DateDescription))
+        {
+            <tr>
+                <td class="bold">Date Description:</td>
+                <td>@item.DateDescription</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataCollectionAgentType))
+        {
+            <tr>
+                <td class="bold">DataCollection Agent Type:</td>
+                <td>@item.DataCollectionAgentType</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataCollectionAgentPrimary))
+        {
+            <tr>
+                <td class="bold">Data Collection Agent Primary:</td>
+                <td>@item.DataCollectionAgentPrimary</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataCollectionAgentNonPrimary))
+        {
+            <tr>
+                <td class="bold">Data Collection Agent Non Primary:</td>
+                <td>@item.DataCollectionAgentNonPrimary</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ConfidentialityLaw))
+        {
+            <tr>
+                <td class="bold">Confidentiality Law:</td>
+                <td>@item.ConfidentialityLaw</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.VoluntaryConfidentialStatement))
+        {
+            <tr>
+                <td class="bold">Voluntary Confidential Statement:</td>
+                <td>@item.VoluntaryConfidentialStatement</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.VoluntaryConfidentialStatementRespondent))
+        {
+            <tr>
+                <td class="bold">Voluntary Confidential Statement Respondent:</td>
+                <td>@item.VoluntaryConfidentialStatementRespondent</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ExperimentDescription))
+        {
+            <tr>
+                <td class="bold">Experiment Description:</td>
+                <td>@item.ExperimentDescription</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ExperimentResults))
+        {
+            <tr>
+                <td class="bold">Experiment Results:</td>
+                <td>@item.ExperimentResults</td>
+            </tr>
+        }
+        @if (item.Respondents != null && item.Respondents.Any())
+        {
+            <tr>
+                <td class="bold">All Respondents:</td>
+                <td>
+                    <ol>
+                        @foreach (var r in @item.Respondents)
+                        {
+                            <li>
+                                <p><a href="@Url.Action("GetRespondentDetail", "Respondent", new { Id = r.Id})">@r.Id</a></p>
+                                @if (!String.IsNullOrWhiteSpace(r.Description))
+                                { 
+                                    <p>@r.Description</p>
+                                }
+                            </li>
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
+        
+        @if (item.Packages != null && item.Packages.Any())
+        {
+            <tr>
+                <td class="bold">All Packages:</td>
+                <td>
+                    <ol>
+                        @foreach (var p in @item.Packages)
+                        {
+                            <li>
+                                <a href="@Url.Action("GetPackageDetail","Package", new { Id = p.Id})">@p.ReferenceNumber</a>
+                            </li>
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
     </table>
-
 } 

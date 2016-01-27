@@ -12,215 +12,365 @@
         <tr>
             <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
         </tr>
-        @if (@item.Symbol != null)
+        @if (!String.IsNullOrWhiteSpace(@item.Symbol))
         {
             <tr>
                 <td class="bold">Symbol:</td>
                 <td>@item.Symbol</td>
             </tr>
         }
-        <tr>
-            <td class="bold">Old Name 1:</td>
-            <td>@item.OldName1</td>
-        </tr>
-        <tr>
-            <td class="bold">Old Name 1 Symbol:</td>
-            <td>@item.OldName1Symbol</td>
-        </tr>
-        <tr>
-            <td class="bold">Old Name1 Duration:</td>
-            <td>@item.OldName1Duration</td>
-        </tr>
-        <tr>
-            <td class="bold">Old Name 2:</td>
-            <td>@item.OldName2</td>
-        </tr>
-        <tr>
-            <td class="bold">Old Name 2 Symbol:</td>
-            <td>@item.OldName2Symbol</td>
-        </tr>
-        <tr>
-            <td class="bold">Old Name 2 Duration:</td>
-            <td>@item.OldName2Duration</td>
-        </tr>
-        <tr>
-            <td class="bold">Parent Id:</td>
-            <td>@item.Parent.Id</td>
-        </tr>
-        <tr>
-            <td class="bold">Parent Name:</td>
-            <td>@item.Parent.Name</td>
-        </tr>
-        <tr>
-            <td class="bold">Investigator:</td>
-            <td>@item.Investigator</td>
-        </tr>
-        <tr>
-            <td class="bold">Bureau Code:</td>
-            <td>@item.BureauCode</td>
-        </tr>
-        <tr>
-            <td class="bold">Program Code:</td>
-            <td>@item.ProgramCode</td>
-        </tr>
-        <tr>
-            <td class="bold">Website:</td>
-            <td>@item.Website</td>
-        </tr>
-        <tr>
-            <td class="bold">Keywords:</td>
-            <td>@item.Keywords</td>
-        </tr>
-        <tr>
-            <td class="bold">Description:</td>
-            <td>@item.Description</td>
-        </tr>
-        <tr>
-            <td class="bold">Authorizing Law:</td>
-            <td>@item.AuthorizingLaw</td>
-        </tr>
-        <tr>
-            <td class="bold">Total Cost:</td>
-            <td>@item.TotalCost</td>
-        </tr>
-        <tr>
-            <td class="bold">Total Cost Years:</td>
-            <td>@item.TotalCostYears</td>
-        </tr>
-        <tr>
-            <td class="bold">Total Cost Description:</td>
-            <td>@item.TotalCostDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Universe:</td>
-            <td>@item.CollectionUniverse</td>
-        </tr>
+        @if (!String.IsNullOrWhiteSpace(item.OldName1))
+        {
+            <tr>
+                <td class="bold">Old Name 1:</td>
+                <td>@item.OldName1</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName1Symbol))
+        {
+            <tr>
+                <td class="bold">Old Name 1 Symbol:</td>
+                <td>@item.OldName1Symbol</td>
+            </tr>
 
-        <tr>
-            <td class="bold">Collection Longitudinal:</td>
-            <td>@item.CollectionLongitudinal</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Cross Sectional:</td>
-            <td>@item.CollectionCrossSectional</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Program Monitoring:</td>
-            <td>@item.CollectionProgramMonitoring</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Grantee Reporting:</td>
-            <td>@item.CollectionGranteeReporting</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Voluntary:</td>
-            <td>@item.CollectionVoluntary</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Mandatory:</td>
-            <td>@item.CollectionMandatory</td>
-        </tr>
-        <tr>
-            <td class="bold">Collection Required For Benefits:</td>
-            <td>@item.CollectionRequiredForBenefits</td>
-        </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName1Duration))
+        {
+            <tr>
+                <td class="bold">Old Name1 Duration:</td>
+                <td>@item.OldName1Duration</td>
+            </tr>
 
-        <tr>
-            <td class="bold">Collection Requirement Reason:</td>
-            <td>@item.CollectionRequirementReason</td>
-        </tr>
-        <tr>
-            <td class="bold">Sorn:</td>
-            <td>@item.Sorn</td>
-        </tr>
-        <tr>
-            <td class="bold">Sorn Url:</td>
-            <td>@item.SornUrl</td>
-        </tr>
-        <tr>
-            <td class="bold">Confidentiality Restrictions:</td>
-            <td>@item.ConfidentialityRestrictions</td>
-        </tr>
-        <tr>
-            <td class="bold">PII_DI:</td>
-            <td>@item.PII_DI</td>
-        </tr>
-        <tr>
-            <td class="bold">PIA:</td>
-            <td>@item.PIA</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Could Be Public:</td>
-            <td>@item.DataCouldBePublic</td>
-        </tr>
-        <tr>
-            <td class="bold">Publication Statistics Type:</td>
-            <td>@item.PublicationStatisticsType</td>
-        </tr>
-        <tr>
-            <td class="bold">Publication Statistics Url:</td>
-            <td>@item.PublicationStatisticsUrl</td>
-        </tr>
-        <tr>
-            <td class="bold">Publication Statistics Date:</td>
-            <td>@item.PublicationStatisticsDate</td>
-        </tr>
-        <tr>
-            <td class="bold">Publication Data Url:</td>
-            <td>@item.PublicationDataUrl</td>
-        </tr>
-        <tr>
-            <td class="bold">Publication Data Date:</td>
-            <td>@item.PublicationDataDate</td>
-        </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2))
+        {
+            <tr>
+                <td class="bold">Old Name 2:</td>
+                <td>@item.OldName2</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2Symbol))
+        {
+            <tr>
+                <td class="bold">Old Name 2 Symbol:</td>
+                <td>@item.OldName2Symbol</td>
+            </tr>
 
-        <tr>
-            <td class="bold">Publication Restricted Use Data Date:</td>
-            <td>@item.PublicationRestrictedUseDataDate</td>
-        </tr>
-        <tr>
-            <td class="bold">Subject Population Primary:</td>
-            <td>@item.SubjectPopulationPrimary</td>
-        </tr>
-        <tr>
-            <td class="bold">Subject Population Non Primary:</td>
-            <td>@item.SubjectPopulationNonPrimary</td>
-        </tr>
-        <tr>
-            <td class="bold">Subect Population Other:</td>
-            <td>@item.SubectPopulationOther</td>
-        </tr>
-        <tr>
-            <td class="bold">Subject Population Description:</td>
-            <td>@item.SubjectPopulationDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Levels Available:</td>
-            <td>@item.DataLevelsAvailable</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Level Public:</td>
-            <td>@item.DataLevelPublic</td>
-        </tr>
-        <tr>
-            <td class="bold">Data Level Description:</td>
-            <td>@item.DataLevelDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Previous Collection Id:</td>
-            <td>@item.PreviousCollection.Id</td>
-        </tr>
-        <tr>
-            <td class="bold">Previous Collection Name:</td>
-            <td>@item.PreviousCollection.Name</td>
-        </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2Duration))
+        {
+            <tr>
+                <td class="bold">Old Name 2 Duration:</td>
+                <td>@item.OldName2Duration</td>
+            </tr>
+
+        }
+        @if (item.Parent.Id != 0)
+        {
+            <tr>
+                <td class="bold">Parent Id:</td>
+                <td>@item.Parent.Id</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Parent.Name))
+        {
+            <tr>
+                <td class="bold">Parent Name:</td>
+                <td>@item.Parent.Name</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Investigator))
+        {
+            <tr>
+                <td class="bold">Investigator:</td>
+                <td>@item.Investigator</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.BureauCode))
+        {
+            <tr>
+                <td class="bold">Bureau Code:</td>
+                <td>@item.BureauCode</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ProgramCode))
+        {
+            <tr>
+                <td class="bold">Program Code:</td>
+                <td>@item.ProgramCode</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Website))
+        {
+            <tr>
+                <td class="bold">Website:</td>
+                <td>@item.Website</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Keywords))
+        {
+            <tr>
+                <td class="bold">Keywords:</td>
+                <td>@item.Keywords</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Description))
+        {
+            <tr>
+                <td class="bold">Description:</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.AuthorizingLaw))
+        {
+            <tr>
+                <td class="bold">Authorizing Law:</td>
+                <td>@item.AuthorizingLaw</td>
+            </tr>
+        }
+        @if (item.TotalCost.HasValue)
+        {
+            <tr>
+                <td class="bold">Total Cost:</td>
+                <td>@item.TotalCost.Value</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.TotalCostYears))
+        {
+            <tr>
+                <td class="bold">Total Cost Years:</td>
+                <td>@item.TotalCostYears</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.TotalCostDescription))
+        {
+            <tr>
+                <td class="bold">Total Cost Description:</td>
+                <td>@item.TotalCostDescription</td>
+            </tr>
+        }
+        @if (item.CollectionUniverse || item.CollectionSample || item.CollectionLongitudinal || item.CollectionCrossSectional || item.CollectionProgramMonitoring || item.CollectionGranteeReporting)
+        {
+            <tr>
+                <td class="bold">Collection Type:</td>
+                <td>
+                    <ul>
+                        @if (item.CollectionUniverse)
+                        {
+                            <li>Universe</li>
+                        }
+                        @if (item.CollectionSample)
+                        {
+                            <li>Sample</li>
+                        }
+                        @if (item.CollectionLongitudinal)
+                        {
+                            <li>Longitudinal</li>
+                        }
+                        @if (item.CollectionCrossSectional)
+                        {
+                            <li>Cross-Sectional</li>
+                        }
+                        @if (item.CollectionProgramMonitoring)
+                        {
+                            <li>Program Monitoring</li>
+                        }
+                        @if (item.CollectionGranteeReporting)
+                        {
+                            <li>Grante Reporting</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+        @if (item.CollectionVoluntary || item.CollectionMandatory || item.CollectionRequiredForBenefits)
+        {
+            <tr>
+                <td class="bold">Collection Requirement:</td>
+                <td>
+                    <ul>
+                        @if (item.CollectionVoluntary)
+                        {
+                            <li>Voluntary</li>
+                        }
+                        @if (item.CollectionMandatory)
+                        {
+                            <li>Mandatory</li>
+                        }
+                        @if (item.CollectionRequiredForBenefits)
+                        {
+                            <li>Required for Benefits</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.CollectionRequirementDescription))
+        {
+            <tr>
+                <td class="bold">Collection Requirement Description:</td>
+                <td>@item.CollectionRequirementDescription</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.CollectionRequirementReason))
+        {
+            <tr>
+                <td class="bold">Collection Requirement Reason:</td>
+                <td>@item.CollectionRequirementReason</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Sorn))
+        {
+            <tr>
+                <td class="bold">Sorn:</td>
+                <td>@item.Sorn</td>
+            </tr>
+        }
+        @if (item.SornUrl != null)
+        {
+            <tr>
+                <td class="bold">Sorn Url:</td>
+                <td>@item.SornUrl.ToString()</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ConfidentialityRestrictions))
+        {
+            <tr>
+                <td class="bold">Confidentiality Restrictions:</td>
+                <td>@item.ConfidentialityRestrictions</td>
+            </tr>
+        }
+        @if (item.PII_DI || item.PIA || item.DataCouldBePublic)
+        {
+            <tr>
+                <td class="bold">Confidentiality Level:</td>
+                <td>
+                    <ul>
+                        @if (item.PII_DI)
+                        {
+                        <li>PII_DI</li>}
+                        @if (item.PIA)
+                        {
+                        <li>PIA</li> }
+                        @if (item.DataCouldBePublic)
+                        {
+                        <li>Data Could Be Public</li>}
+                    </ul>
+                </td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.PublicationStatisticsType))
+        {
+            <tr>
+                <td class="bold">Publication Statistics Type:</td>
+                <td>@item.PublicationStatisticsType</td>
+            </tr>
+        }
+        @if (item.PublicationStatisticsUrl != null)
+        {
+            <tr>
+                <td class="bold">Publication Statistics Url:</td>
+                <td>@item.PublicationStatisticsUrl.ToString()</td>
+            </tr>
+        }
+        @if (item.PublicationStatisticsDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Publication Statistics Date:</td>
+                <td>@item.PublicationStatisticsDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.PublicationStatisticsUrl != null)
+        {
+            <tr>
+                <td class="bold">Publication Data Url:</td>
+                <td>@item.PublicationDataUrl.ToString()</td>
+            </tr>
+        }
+        @if (item.PublicationDataDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Publication Data Date:</td>
+                <td>@item.PublicationDataDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.PublicationRestrictedUseDataDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Publication Restricted Use Data Date:</td>
+                <td>@item.PublicationRestrictedUseDataDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.SubjectPopulationPrimary))
+        {
+            <tr>
+                <td class="bold">Subject Population Primary:</td>
+                <td>@item.SubjectPopulationPrimary</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.SubjectPopulationNonPrimary))
+        {
+            <tr>
+                <td class="bold">Subject Population Non Primary:</td>
+                <td>@item.SubjectPopulationNonPrimary</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.SubectPopulationOther))
+        {
+            <tr>
+                <td class="bold">Subect Population Other:</td>
+                <td>@item.SubectPopulationOther</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.SubjectPopulationDescription))
+        {
+            <tr>
+                <td class="bold">Subject Population Description:</td>
+                <td>@item.SubjectPopulationDescription</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataLevelsAvailable))
+        {
+            <tr>
+                <td class="bold">Data Levels Available:</td>
+                <td>@item.DataLevelsAvailable</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataLevelPublic))
+        {
+            <tr>
+                <td class="bold">Data Level Public:</td>
+                <td>@item.DataLevelPublic</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DataLevelDescription))
+        {
+            <tr>
+                <td class="bold">Data Level Description:</td>
+                <td>@item.DataLevelDescription</td>
+            </tr>
+        }
+        @if (item.PreviousCollection.Id != 0)
+        {
+            <tr>
+                <td class="bold">Previous Collection Id:</td>
+                <td>@item.PreviousCollection.Id</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.PreviousCollection.Name))
+        {
+            <tr>
+                <td class="bold">Previous Collection Name:</td>
+                <td>@item.PreviousCollection.Name</td>
+            </tr>
+        }
         @if (item.Contacts != null && !item.Contacts.Any())
         {
             <tr>
                 <td class="bold">Contacts:</td>
                 <td>
                     <ol>
-                        @foreach (var con in item.Contacts/*.OrderBy(c => c.Order)*/)
+                        @foreach (var con in item.Contacts)
                         {
                             <li>
                                 <p>Name: @con.FirstName @con.LastName</p>
@@ -235,7 +385,7 @@
                             </li>
                         }
                     </ol>
-              </td>
+                </td>
             </tr>
         }
         @if (item.Activities != null && !item.Activities.Any())
@@ -244,9 +394,9 @@
                 <td class="bold">Activities:</td>
                 <td>
                     <ol>
-                        @foreach (var act in item.Activities.OrderBy(a => a.Name))
+                        @foreach (var a in item.Activities)
                         {
-                            <li>@act.Name</li> // need to transform into a link
+                            <li><a href="@Url.Action("GetDetail","Activity",new {id = a.Id })">@a.Name</a></li> // need to transform into a link
                         }
                     </ol>
                 </td>
@@ -258,24 +408,86 @@
                 <td class="bold">Files:</td>
                 <td>
                     <ol>
-                        @foreach (var file in item.Files.OrderBy(f => f.FileName))
+                        @foreach (var f in item.Files)
                         {
                             <li>
-                                <p>Dataset Title: @file.DatasetTitle</p>
-                                <p>File Name: @file.FileName</p>
-                                <p>File Format: @file.FileFormat</p>
-                                <p>Dataset Restriction: @file.DatasetRestriction</p>
+                                @if (!String.IsNullOrWhiteSpace(f.DatasetTitle))
+                                {
+                                    <p>Dataset Title: @f.DatasetTitle</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(f.FileName))
+                                { 
+                                    <p>File Name: @f.FileName</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(f.FileFormat))
+                                { 
+                                    <p>File Format: @f.FileFormat</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(f.DatasetRestriction))
+                                { 
+                                    <p>Dataset Restriction: @f.DatasetRestriction</p>
+                                }
                             </li>
                         }
                     </ol>
                 </td>
             </tr>
         }
-        <tr>
-            <td class="bold">All Elements:</td>
-            <td>@Html.Raw(@item.Elements)</td>
-        </tr>
+        @if (item.Elements != null && !item.Elements.Any())
+        {
+            <tr>
+                <td class="bold">All Elements:</td>
+                <td>
+                    <ol>
+                        @foreach (var e in item.Elements)
+                        {
+                            <li>
+                                @if (!String.IsNullOrWhiteSpace(e.Name))
+                                { 
+                                    <p>Name: @e.Name</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Type))
+                                {
+                                    <p>Type: @e.Type</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Label))
+                                {
+                                    <p>Label: @e.Label</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.LabelExtended))
+                                {
+                                    <p>Label: @e.LabelExtended</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Question))
+                                {
+                                    <p>Question: @e.Question</p>
+                                }
+                                @if(e.Values != null && !e.Values.Any())
+                                {
+                                    <ol>
+                                        @foreach (var v in e.Values)
+                                        {
+                                            <li>
+                                                @if (!String.IsNullOrWhiteSpace(v.Option))
+                                                {
+                                                    <p>Value Option: @v.Option</p>
+                                                }
+                                                @if(!String.IsNullOrWhiteSpace(v.Label))
+                                                {
+                                                    <p>Value Label: @v.Label</p>
+                                                }
+                                            </li>
+                                        }
+                                    </ol>
+                                }
+                            </li>
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
+
     </table>
 
-}    
+}
 

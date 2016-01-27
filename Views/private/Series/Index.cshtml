@@ -2,58 +2,97 @@
     Layout = "~/Views/Shared/private/_SeriesLayout.cshtml";
 }
 
-@model List<SeriesViewModel>
+@model List<DataInventory.Private.Models.SeriesViewModel>
 
-    @foreach (var item in Model)
-    {
-        <table style="width: 100%; margin-bottom: 10px" id="tblSeries">
-            <tr>
-                <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdSeriesID" />@item.Name</td>
-            </tr>
-            <tr>
-                <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
-            </tr>
+@foreach (var item in Model)
+{
+    <table style="width: 100%; margin-bottom: 10px" id="tblSeries">
+        <tr>
+            <td style="font-weight:bold; font-size: medium; padding-bottom: 8px;" colspan="2"><input type="hidden" value="@item.Id" id="hdSeriesID" />@item.Name</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
+        </tr>
+        @if (!String.IsNullOrWhiteSpace(item.Symbol))
+        {
             <tr>
                 <td class="bold" style="width: 160px;">Symbol:</td>
                 <td>@item.Symbol</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName1))
+        {
             <tr>
                 <td class="bold">Old Name1:</td>
                 <td>@item.OldName1</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName1Symbol))
+        {
             <tr>
                 <td class="bold">Old Name1 Symbol:</td>
                 <td>@item.OldName1Symbol</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName1Duration))
+        {
             <tr>
                 <td class="bold">Old Name1 Duration:</td>
                 <td>@item.OldName1Duration</td>
             </tr>
-
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2))
+        {
             <tr>
                 <td class="bold">Old Name2:</td>
                 <td>@item.OldName2</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2Symbol))
+        {
             <tr>
                 <td class="bold">Old Name2 Symbol:</td>
                 <td>@item.OldName2Symbol</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OldName2Duration))
+        {
             <tr>
                 <td class="bold">Old Name2 Duration:</td>
                 <td>@item.OldName2Duration</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ParentOrganization))
+        {
             <tr>
                 <td class="bold">Parent Organization</td>
                 <td>@item.ParentOrganization</td>
             </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Description))
+        {
             <tr>
                 <td class="bold">Description</td>
                 <td>@item.Description</td>
             </tr>
+        }
+        @if (item.Collections != null && item.Collections.Any())
+        {
             <tr>
                 <td class="bold">Collections:</td>
-                <td>@Html.Raw (@item.Collections)</td>
+                <td>
+                    <ol>
+                        @foreach (var c in item.Collections)
+                        {
+                            if (c.Id != 0 && !String.IsNullOrWhiteSpace(c.Name))
+                            {
+                                <li><a href="@Url.Action("GetCollectionDetail", "Collection", new { Id = c.Id})">@c.Name</a></li>
+                            }
+                        }
+                    </ol>
+                </td>
             </tr>
-        </table>
+        }
+    </table>
 
-    }
+} 

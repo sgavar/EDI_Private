@@ -13,39 +13,120 @@
         <tr>
             <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
         </tr>
-        <tr>
-            <td class="bold" style="width: 160px;">FileName:</td>
-            <td>@item.FileName</td>
-        </tr>
-        <tr>
-            <td class="bold">FileFormat:</td>
-            <td>@item.FileFormat</td>
-        </tr>
-        <tr>
-            <td class="bold">DatasetTitle:</td>
-            <td>@item.DatasetTitle</td>
-        </tr>
-        <tr>
-            <td class="bold">Dataset Restriction:</td>
-            <td>@item.DatasetRestriction</td>
-        </tr>
+        @if (!String.IsNullOrWhiteSpace(item.FileName))
+        {
+            <tr>
+                <td class="bold" style="width: 160px;">FileName:</td>
+                <td>@item.FileName</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.FileFormat))
+        {
+            <tr>
+                <td class="bold">FileFormat:</td>
+                <td>@item.FileFormat</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DatasetTitle))
+        {
+            <tr>
+                <td class="bold">DatasetTitle:</td>
+                <td>@item.DatasetTitle</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DatasetRestriction))
+        {
+            <tr>
+                <td class="bold">Dataset Restriction:</td>
+                <td>@item.DatasetRestriction</td>
+            </tr>
+        }
+        
+        @if (!String.IsNullOrWhiteSpace(item.DatasetLocation))
+        {
+            <tr>
+                <td class="bold">DatasetLocation:</td>
+                <td>@item.DatasetLocation</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.DatasetLocationDescription))
+        {
+            <tr>
+                <td class="bold">Dataset Location Description:</td>
+                <td>@item.DatasetLocationDescription</td>
+            </tr>
+        }
+        @if (item.Collections != null && item.Collections.Any())
+        {
+            <tr>
+                <td class="bold">Collections:</td>
+                <td>
+                    <ol>
+                        @foreach(var c in item.Collections)
+                        {
+                            if(c.Id != 0 && !String.IsNullOrWhiteSpace(c.Name))
+                            {
+                                <li><a href="@Url.Action("GetCollectionDetail", "Collection", new { Id = c.Id})">@c.Name</a></li>
+                            }
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
+        @if (item.Elements != null && !item.Elements.Any())
+        {
+            <tr>
+                <td class="bold">All Elements:</td>
+                <td>
+                    <ol>
+                        @foreach (var e in item.Elements)
+                        {
+                            <li>
+                                @if (!String.IsNullOrWhiteSpace(e.Name))
+                                {
+                                    <p>Name: @e.Name</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Type))
+                                {
+                                    <p>Type: @e.Type</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Label))
+                                {
+                                    <p>Label: @e.Label</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.LabelExtended))
+                                {
+                                    <p>Label: @e.LabelExtended</p>
+                                }
+                                @if (!String.IsNullOrWhiteSpace(e.Question))
+                                {
+                                    <p>Question: @e.Question</p>
+                                }
+                                @if (e.Values != null && !e.Values.Any())
+                                {
+                                    <ol>
+                                        @foreach (var v in e.Values)
+                                        {
+                                            <li>
+                                                @if (!String.IsNullOrWhiteSpace(v.Option))
+                                                {
+                                                    <p>Value Option: @v.Option</p>
+                                                }
+                                                @if (!String.IsNullOrWhiteSpace(v.Label))
+                                                {
+                                                    <p>Value Label: @v.Label</p>
+                                                }
+                                            </li>
+                                        }
+                                    </ol>
+                                }
+                            </li>
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
 
-        <tr>
-            <td class="bold">DatasetLocation:</td>
-            <td>@item.DatasetLocation</td>
-        </tr>
-        <tr>
-            <td class="bold">Dataset Location Description:</td>
-            <td>@item.DatasetLocationDescription</td>
-        </tr>
-        <tr>
-            <td class="bold">Collections:</td>
-            <td>@Html.Raw(@item.Collections)</td>
-        </tr>
-        <tr>
-            <td class="bold">Elements:</td>
-            <td>@Html.Raw(@item.Elements)</td>
-        </tr>
     </table>
 
 }

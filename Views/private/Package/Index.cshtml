@@ -13,111 +13,189 @@
         <tr>
             <td colspan="2" style="border-top: 1px solid #c5dbec;"></td>
         </tr>
-        <tr>
-            <td class="bold" style="width: 160px;">ICRAS:</td>
-            <td>@item.ICRAS</td>
-        </tr>
-        <tr>
-            <td class="bold">EDICS:</td>
-            <td>@item.EDICS</td>
-        </tr>
-        <tr>
-            <td class="bold">ICR ReferenceNumber:</td>
-            <td>@item.ICRReferenceNumber</td>
-        </tr>
-        <tr>
-            <td class="bold">OMB Control Number:</td>
-            <td>@item.OMBControlNumber</td>
-        </tr>
-
-        <tr>
-            <td class="bold">CFDA:</td>
-            <td>@item.CFDA</td>
-        </tr>
-        <tr>
-            <td class="bold">Keywords:</td>
-            <td>@item.Keywords</td>
-        </tr>
-        <tr>
-            <td class="bold">Abstract:</td>
-            <td>@item.Abstract</td>
-        </tr>
-        <tr>
-            <td class="bold">Purpose:</td>
-            <td>@item.Purpose</td>
-        </tr>
-        <tr>
-            <td class="bold">Issue Date:</td>
-            <td>@item.IssueDate</td>
-        </tr>
-
-        <tr>
-            <td class="bold">Expiration Date:</td>
-            <td>@item.ExpirationDate</td>
-        </tr>
-
-
-        <tr>
-            <td class="bold">Notice Type:</td>
-            <td>@item.NoticeType</td>
-        </tr>
-        <tr>
-            <td class="bold">TermsOfClearance:</td>
-            <td>@item.TermsOfClearance</td>
-        </tr>
-        <tr>
-            <td class="bold">Number Respondents:</td>
-            <td>@item.NumberRespondents</td>
-        </tr>
-        <tr>
-            <td class="bold">Number Responses:</td>
-            <td>@item.NumberResponses</td>
-        </tr>
-        <tr>
-            <td class="bold">Percent Collected Electronically:</td>
-            <td>@item.PercentCollectedElectronically</td>
-        </tr>
-        <tr>
-            <td class="bold">Burden Total:</td>
-            <td>@item.BurdenTotal</td>
-        </tr>
-        <tr>
-            <td class="bold">Burden Change:</td>
-            <td>@item.BurdenChange</td>
-        </tr>
-
-        <tr>
-            <td class="bold">Burden Adjustment:</td>
-            <td>@item.BurdenAdjustment</td>
-        </tr>
-        <tr>
-            <td class="bold">Burden Explanation:</td>
-            <td>@item.BurdenExplanation</td>
-        </tr>
-        <tr>
-            <td class="bold">Public Comment:</td>
-            <td>@item.PublicComment</td>
-        </tr>
-        <tr>
-            <td class="bold">OMB Passback:</td>
-            <td>@item.OMBPassback</td>
-        </tr>
-        <tr>
-            <td class="bold">Authorizing Law Cited:</td>
-            <td>@item.AuthorizingLawCited</td>
-        </tr>
-        <tr>
-            <td class="bold">Authorizing Law Text:</td>
-            <td>@item.AuthorizingLawText</td>
-        </tr>
-        <tr>
-            <td class="bold">Contractor Confidentiality Form Location:</td>
-            <td>@item.ContractorConfidentialityFormLocation</td>
-        </tr>
-        <tr>
-            <td class="bold">Activities:</td>
-            <td>@Html.Raw(@item.Activities)</td>
-        </tr>
+        @if (!String.IsNullOrWhiteSpace(item.ICRAS))
+        {
+            <tr>
+                <td class="bold" style="width: 160px;">ICRAS:</td>
+                <td>@item.ICRAS</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.EDICS))
+        {
+            <tr>
+                <td class="bold">EDICS:</td>
+                <td>@item.EDICS</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.ICRReferenceNumber))
+        {
+            <tr>
+                <td class="bold">ICR ReferenceNumber:</td>
+                <td>@item.ICRReferenceNumber</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OMBControlNumber))
+        {
+            <tr>
+                <td class="bold">OMB Control Number:</td>
+                <td>@item.OMBControlNumber</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.CFDA))
+        {
+            <tr>
+                <td class="bold">CFDA:</td>
+                <td>@item.CFDA</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Keywords))
+        {
+            <tr>
+                <td class="bold">Keywords:</td>
+                <td>@item.Keywords</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Abstract))
+        {
+            <tr>
+                <td class="bold">Abstract:</td>
+                <td>@item.Abstract</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.Purpose))
+        {
+            <tr>
+                <td class="bold">Purpose:</td>
+                <td>@item.Purpose</td>
+            </tr>
+        }
+        @if (item.IssueDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Issue Date:</td>
+                <td>@item.IssueDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (item.ExpirationDate.HasValue)
+        {
+            <tr>
+                <td class="bold">Expiration Date:</td>
+                <td>@item.ExpirationDate.Value.ToShortDateString()</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.NoticeType))
+        {
+            <tr>
+                <td class="bold">Notice Type:</td>
+                <td>@item.NoticeType</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.TermsOfClearance))
+        {
+            <tr>
+                <td class="bold">TermsOfClearance:</td>
+                <td>@item.TermsOfClearance</td>
+            </tr>
+        }
+        @if (item.NumberRespondents.HasValue)
+        {
+            <tr>
+                <td class="bold">Number Respondents:</td>
+                <td>@item.NumberRespondents.Value</td>
+            </tr>
+        }
+        @if (item.NumberResponses.HasValue)
+        {
+            <tr>
+                <td class="bold">Number Responses:</td>
+                <td>@item.NumberResponses.Value</td>
+            </tr>
+        }
+        @if (item.PercentCollectedElectronically.HasValue)
+        {
+            <tr>
+                <td class="bold">Percent Collected Electronically:</td>
+                <td>@item.PercentCollectedElectronically.Value</td>
+            </tr>
+        }
+        @if (item.BurdenTotal.HasValue)
+        {
+            <tr>
+                <td class="bold">Burden Total:</td>
+                <td>@item.BurdenTotal.Value</td>
+            </tr>
+        }
+        @if (item.BurdenChange.HasValue)
+        {
+            <tr>
+                <td class="bold">Burden Change:</td>
+                <td>@item.BurdenChange.Value</td>
+            </tr>
+        }
+        @if (item.BurdenAdjustment.HasValue)
+        {
+            <tr>
+                <td class="bold">Burden Adjustment:</td>
+                <td>@item.BurdenAdjustment.Value</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.BurdenExplanation))
+        {
+            <tr>
+                <td class="bold">Burden Explanation:</td>
+                <td>@item.BurdenExplanation</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.PublicComment))
+        {
+            <tr>
+                <td class="bold">Public Comment:</td>
+                <td>@item.PublicComment</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.OMBPassback))
+        {
+            <tr>
+                <td class="bold">OMB Passback:</td>
+                <td>@item.OMBPassback</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.AuthorizingLawCited))
+        {
+            <tr>
+                <td class="bold">Authorizing Law Cited:</td>
+                <td>@item.AuthorizingLawCited</td>
+            </tr>
+        }
+        @if (!String.IsNullOrWhiteSpace(item.AuthorizingLawText))
+        {
+            <tr>
+                <td class="bold">Authorizing Law Text:</td>
+                <td>@item.AuthorizingLawText</td>
+            </tr>
+        }
+        @if (!string.IsNullOrWhiteSpace(item.ContractorConfidentialityFormLocation))
+        {
+            <tr>
+                <td class="bold">Contractor Confidentiality Form Location:</td>
+                <td>@item.ContractorConfidentialityFormLocation</td>
+            </tr>
+        }
+        
+        @if (item.Activities != null && !item.Activities.Any())
+        {
+            <tr>
+                <td class="bold">Activities:</td>
+                <td>
+                    <ol>
+                        @foreach (var a in item.Activities)
+                        {
+                            <li><a href="@Url.Action("GetDetail","Activity",new {id = a.Id })">@a.Name</a></li> // need to transform into a link
+                        }
+                    </ol>
+                </td>
+            </tr>
+        }
     </table>
 
 }
