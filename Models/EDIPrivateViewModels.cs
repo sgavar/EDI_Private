@@ -1,10 +1,8 @@
-﻿// EDIPrivateViewModels.cs
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 // Only create new Views for those classes
-namespace DataInventory.Private.Models
+namespace DataInventory.Models.Private
 {
     // Create as a new View
     public class SeriesViewModel

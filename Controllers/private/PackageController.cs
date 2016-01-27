@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
-using DataInventory.Private.Models;
 using DataInventory.Models;
 
-namespace DataInventory.Private.Controllers
+namespace DataInventory.Controllers.Private
 {
     public class PackageController : Controller
     {
@@ -10,11 +9,11 @@ namespace DataInventory.Private.Controllers
 
         // GET: /Package/
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index ()
         {
-            return View (
+            var viewModel = (
                 from p in db.vwPackage
-                select new PackageViewModel ()
+                select new Models.Private.PackageViewModel ()
                 {
                     Id = p.Id,
                     ICRAS = p.ICRAS,
@@ -45,22 +44,34 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwActivityPackageLink
                         where link.PackageId == p.Id
                         join stub in db.vwCollectionStub on link.CollectionId equals stub.Id
-                        select new ActivityStubViewModel ()
+                        select new Models.Private.ActivityStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View (viewModel);
         }
 
-        // GET: /Package/Id
+        // GET: /Package/id
         [HttpGet]
-        public ActionResult GetPackageDetail (int Id)
+        public ActionResult GetPackageDetail (int? id)
         {
-            return View ("Index",
+            if (id == null)
+            {
+                return new HttpStatusCodeResult (System.Net.HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = (
                 from p in db.vwPackage
-                where p.Id == Id
-                select new PackageViewModel ()
+                where p.Id == id
+                select new Models.Private.PackageViewModel ()
                 {
                     Id = p.Id,
                     ICRAS = p.ICRAS,
@@ -91,12 +102,19 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwActivityPackageLink
                         where link.PackageId == p.Id
                         join stub in db.vwCollectionStub on link.CollectionId equals stub.Id
-                        select new ActivityStubViewModel ()
+                        select new Models.Private.ActivityStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View ("Index", viewModel);
         }
     }
 }

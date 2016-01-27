@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
-using DataInventory.Private.Models;
 using DataInventory.Models;
 
-namespace DataInventory.Private.Controllers
+namespace DataInventory.Controllers.Private
 {
     public class RespondentController : Controller
     {
@@ -10,22 +9,21 @@ namespace DataInventory.Private.Controllers
 
         // GET: /Respondent/
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index ()
         {
-            return View ( 
+            var viewModel = (
                 from r in db.vwRespondent
-                select new RespondentViewModel ()
+                select new Models.Private.RespondentViewModel ()
                 {
                     Id = r.Id,
-                    Parent =
-                        (from stub in db.ActivityStub
-                         where stub.Id == r.ParentId
-                         select new ActivityStubViewModel ()
-                         {
-                             Id = r.ParentId,
-                             Name = stub.Name
-                         })
-                        .Single (),
+                    Parent = (
+                        from stub in db.ActivityStub
+                        where stub.Id == r.ParentId
+                        select new Models.Private.ActivityStubViewModel ()
+                        {
+                            Id = r.ParentId,
+                            Name = stub.Name
+                        }).First (),
                     Type = r.Type,
                     Description = r.Description,
                     Keywords = r.Keywords,
@@ -72,28 +70,39 @@ namespace DataInventory.Private.Controllers
                     FollowUpInformedConsentLocation = r.FollowUpInformedConsentLocation,
                     PaperworkReductionActStatement = r.PaperworkReductionActStatement,
                     PaperworkReductionActLocation = r.PaperworkReductionActLocation
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View (viewModel);
         }
 
         // GET: /Respondent/Id
         [HttpGet]
-        public ActionResult GetRespondentDetail (int Id)
+        public ActionResult GetRespondentDetail (int? id)
         {
-            return View ("Index",
+            if (id == null)
+            {
+                return new HttpStatusCodeResult (System.Net.HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = (
                 from r in db.vwRespondent
-                where r.Id == Id
-                select new RespondentViewModel ()
+                where r.Id == id
+                select new Models.Private.RespondentViewModel ()
                 {
                     Id = r.Id,
-                    Parent =
-                        (from stub in db.ActivityStub
-                         where stub.Id == r.ParentId
-                         select new ActivityStubViewModel ()
-                         {
-                             Id = r.ParentId,
-                             Name = stub.Name
-                         })
-                        .Single (),
+                    Parent = (
+                        from stub in db.ActivityStub
+                        where stub.Id == r.ParentId
+                        select new Models.Private.ActivityStubViewModel ()
+                        {
+                            Id = r.ParentId,
+                            Name = stub.Name
+                        }).First (),
                     Type = r.Type,
                     Description = r.Description,
                     Keywords = r.Keywords,
@@ -140,7 +149,14 @@ namespace DataInventory.Private.Controllers
                     FollowUpInformedConsentLocation = r.FollowUpInformedConsentLocation,
                     PaperworkReductionActStatement = r.PaperworkReductionActStatement,
                     PaperworkReductionActLocation = r.PaperworkReductionActLocation
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View ("Index", viewModel);
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using DataInventory.Private.Models;
 using DataInventory.Models;
 
-namespace DataInventory.Private.Controllers
+namespace DataInventory.Controllers.Private
 {
     public class FileController : Controller
     {
@@ -12,11 +11,11 @@ namespace DataInventory.Private.Controllers
 
         // GET: /File/
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index ()
         {
-            return View (
+            var viewModel = (
                 from f in db.vwFile
-                select new FileViewModel ()
+                select new Models.Private.FileViewModel ()
                 {
                     Id = f.Id,
                     Name = f.Name,
@@ -29,7 +28,7 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwFileCollectionLink
                         where link.FileId == f.Id
                         join stub in db.vwCollectionStub on link.CollectionId equals stub.Id
-                        select new CollectionStubViewModel ()
+                        select new Models.Private.CollectionStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
@@ -37,7 +36,7 @@ namespace DataInventory.Private.Controllers
                     Elements =
                         from e in db.vwElement
                         where e.ParentId == f.Id
-                        select new ElementViewModel ()
+                        select new Models.Private.ElementViewModel ()
                         {
                             Name = e.Name,
                             Type = e.Type,
@@ -47,23 +46,35 @@ namespace DataInventory.Private.Controllers
                             Values =
                                 from v in db.vwValue
                                 where v.ParentId == e.Id
-                                select new ValueViewModel ()
+                                select new Models.Private.ValueViewModel ()
                                 {
                                     Option = v.Option,
                                     Value = v.Value
                                 }
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View (viewModel);
         }
 
         // GET: /File/id
         [HttpGet]
-        public ActionResult GetFileDetail (Guid Id)
+        public ActionResult GetFileDetail (Guid? id)
         {
-            return View ("Index",
+            if (id == null)
+            {
+                return new HttpStatusCodeResult (System.Net.HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = (
                 from f in db.vwFile
-                where f.Id == Id
-                select new FileViewModel ()
+                where f.Id == id
+                select new Models.Private.FileViewModel ()
                 {
                     Id = f.Id,
                     Name = f.Name,
@@ -76,7 +87,7 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwFileCollectionLink
                         where link.FileId == f.Id
                         join stub in db.vwCollectionStub on link.CollectionId equals stub.Id
-                        select new CollectionStubViewModel ()
+                        select new Models.Private.CollectionStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
@@ -84,7 +95,7 @@ namespace DataInventory.Private.Controllers
                     Elements =
                         from e in db.vwElement
                         where e.ParentId == f.Id
-                        select new ElementViewModel ()
+                        select new Models.Private.ElementViewModel ()
                         {
                             Name = e.Name,
                             Type = e.Type,
@@ -94,13 +105,20 @@ namespace DataInventory.Private.Controllers
                             Values =
                                 from v in db.vwValue
                                 where v.ParentId == e.Id
-                                select new ValueViewModel ()
+                                select new Models.Private.ValueViewModel ()
                                 {
                                     Option = v.Option,
                                     Value = v.Value
                                 }
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View ("Index", viewModel);
         }
     }
 }

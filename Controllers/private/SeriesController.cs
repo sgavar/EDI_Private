@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using DataInventory.Private.Models;
 using DataInventory.Models;
 
-namespace DataInventory.Private.Controllers
+namespace DataInventory.Controllers.Private
 {
     public class SeriesController : Controller
     {
@@ -13,9 +12,9 @@ namespace DataInventory.Private.Controllers
         [HttpGet]
         public ActionResult Index ()
         {
-            return View (
+            var viewModel = (
                 from s in db.vwSeries
-                select new SeriesViewModel ()
+                select new Models.Private.SeriesViewModel ()
                 {
                     Id = s.Id,
                     Name = s.Name,
@@ -31,22 +30,34 @@ namespace DataInventory.Private.Controllers
                     Collections =
                         from stub in db.vwCollectionStub
                         where stub.ParentId == s.Id
-                        select new CollectionStubViewModel ()
+                        select new Models.Private.CollectionStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View (viewModel);
         }
 
         // GET: /Series/id
         [HttpGet]
-        public ActionResult GetSeriesDetail (int Id)
+        public ActionResult GetSeriesDetail (int? id)
         {
-            return View ("Index",
+            if (id == null)
+            {
+                return new HttpStatusCodeResult (System.Net.HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = (
                 from s in db.vwSeries
-                where s.Id == Id
-                select new SeriesViewModel ()
+                where s.Id == id
+                select new Models.Private.SeriesViewModel ()
                 {
                     Id = s.Id,
                     Name = s.Name,
@@ -62,12 +73,19 @@ namespace DataInventory.Private.Controllers
                     Collections =
                         from stub in db.vwCollectionStub
                         where stub.ParentId == s.Id
-                        select new CollectionStubViewModel ()
+                        select new Models.Private.CollectionStubViewModel ()
                         {
                             Id = stub.Id,
                             Name = stub.Name
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View ("Index", viewModel);
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using DataInventory.Models;
-using DataInventory.Private.Models;
 
-namespace DataInventory.Private.Controllers
+namespace DataInventory.Controllers.Private
 {
     public class ActivityController : Controller
     {
@@ -11,25 +10,24 @@ namespace DataInventory.Private.Controllers
 
         // GET: /Activity/
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index ()
         {
-            return View (
+            var viewModel = (
                 from a in db.vwActivity
-                select new ActivityViewModel ()
+                select new Models.Private.ActivityViewModel ()
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Parent =
-                        (from stub in db.vwCollectionStub
-                         where stub.Id == a.ParentId
-                         select new CollectionStubViewModel ()
-                         {
-                             Id = a.ParentId,
-                             Name = stub.Name
-                         })
-                        .Single (),
+                    Parent = (
+                        from stub in db.vwCollectionStub
+                        where stub.Id == a.ParentId
+                        select new Models.Private.CollectionStubViewModel ()
+                        {
+                            Id = a.ParentId,
+                            Name = stub.Name
+                        }).First (),
                     ActivityType = a.ActivityType,
-                    Cost = (decimal?)a.Cost,
+                    Cost = (decimal?) a.Cost,
                     CostYears = a.CostYears,
                     CostDescription = a.CostDescription,
                     RecruitmentStartDateEstimated = a.RecruitmentStartDateEstimated,
@@ -49,7 +47,7 @@ namespace DataInventory.Private.Controllers
                     Respondents =
                         from stub in db.vwRespondentStub
                         where stub.ParentId == a.Id
-                        select new RespondentStubViewModel ()
+                        select new Models.Private.RespondentStubViewModel ()
                         {
                             Id = stub.Id,
                             Description = stub.Description
@@ -58,36 +56,47 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwActivityPackageLink
                         where link.CollectionId == a.Id
                         join stub in db.PackageStub on link.PackageId equals stub.Id
-                        select new PackageStubViewModel ()
+                        select new Models.Private.PackageStubViewModel ()
                         {
                             Id = stub.Id,
                             ReferenceNumber = stub.ReferenceNumber
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+
+            return View (viewModel);
         }
 
-        // GET: /Activity/Id
+        // GET: /Activity/id
         [HttpGet]
-        public ActionResult GetActivityDetail (int Id)
+        public ActionResult GetActivityDetail (int? id)
         {
-            return View ("Index",
+            if (id == null)
+            {
+                return new HttpStatusCodeResult (System.Net.HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = (
                 from a in db.vwActivity
-                where a.Id == Id
-                select new ActivityViewModel ()
+                where a.Id == id
+                select new Models.Private.ActivityViewModel ()
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Parent =
-                        (from stub in db.vwCollectionStub
-                         where stub.Id == a.ParentId
-                         select new CollectionStubViewModel ()
-                         {
-                             Id = a.ParentId,
-                             Name = stub.Name
-                         })
-                        .Single (),
+                    Parent = (
+                        from stub in db.vwCollectionStub
+                        where stub.Id == a.ParentId
+                        select new Models.Private.CollectionStubViewModel ()
+                        {
+                            Id = a.ParentId,
+                            Name = stub.Name
+                        }).First (),
                     ActivityType = a.ActivityType,
-                    Cost = (decimal?)a.Cost,
+                    Cost = (decimal?) a.Cost,
                     CostYears = a.CostYears,
                     CostDescription = a.CostDescription,
                     RecruitmentStartDateEstimated = a.RecruitmentStartDateEstimated,
@@ -107,7 +116,7 @@ namespace DataInventory.Private.Controllers
                     Respondents =
                         from stub in db.vwRespondentStub
                         where stub.ParentId == a.Id
-                        select new RespondentStubViewModel ()
+                        select new Models.Private.RespondentStubViewModel ()
                         {
                             Id = stub.Id,
                             Description = stub.Description
@@ -116,12 +125,19 @@ namespace DataInventory.Private.Controllers
                         from link in db.vwActivityPackageLink
                         where link.CollectionId == a.Id
                         join stub in db.PackageStub on link.PackageId equals stub.Id
-                        select new PackageStubViewModel ()
+                        select new Models.Private.PackageStubViewModel ()
                         {
                             Id = stub.Id,
                             ReferenceNumber = stub.ReferenceNumber
                         }
-                });
+                }).ToList ();
+
+            if (viewModel == null)
+            {
+                return new HttpNotFoundResult ();
+            }
+            
+            return View ("Index", viewModel);
         }
     }
 }
